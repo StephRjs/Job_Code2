@@ -46,7 +46,7 @@
                 android:layout_width="373dp"
                 android:layout_height="84dp"
                 android:ems="10"
-                android:hint="Escriba una breve descripción de las, especifique los conocimientos requeridos."
+                android:hint="Escriba una breve descripción de las actividades a realizar, y los conocimientos requeridos."
                 android:inputType="textMultiLine" />
 
             <TextView
@@ -66,8 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:ems="10"
-                android:hint="Indique el departamento que solicita las horas estudiante  "
-                android:inputType="textPersonName" />
+                android:hint="Indique el departamento solicitante"
+                android:inputType="textNoSuggestions|textPersonName" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Fecha de inicio"
+                android:text="Fecha máxima de oportunidad"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:ems="10"
-                android:hint="Indique la fecha de inicio de la pasantía"
+                android:hint="Indique la fecha máxima para concursar"
                 android:inputType="date" />
 
             <TextView
