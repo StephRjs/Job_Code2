@@ -74,29 +74,39 @@
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="185dp" />
 
-                <RadioButton
-                    android:id="@+id/radioButton7"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/option"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pasantía"
-                    tools:layout_editor_absoluteX="94dp"
-                    tools:layout_editor_absoluteY="349dp" />
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.24">
 
-                <RadioButton
-                    android:id="@+id/radioButton10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Servicio estudiantil"
-                    tools:layout_editor_absoluteX="94dp"
-                    tools:layout_editor_absoluteY="257dp" />
 
-                <RadioButton
-                    android:id="@+id/radioButton8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Proyecto"
-                    tools:layout_editor_absoluteX="94dp"
-                    tools:layout_editor_absoluteY="302dp" />
+                    <RadioButton
+                        android:id="@+id/internship"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pasantía"
+                        tools:layout_editor_absoluteX="94dp"
+                        tools:layout_editor_absoluteY="349dp" />
+
+                    <RadioButton
+                        android:id="@+id/service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Servicio estudiantil"
+                        tools:layout_editor_absoluteX="94dp"
+                        tools:layout_editor_absoluteY="257dp" />
+
+                    <RadioButton
+                        android:id="@+id/project"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Proyecto"
+                        tools:layout_editor_absoluteX="94dp"
+                        tools:layout_editor_absoluteY="302dp" />
+                </RadioGroup>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,7 +119,7 @@
                         android:id="@+id/button4"
                         style="@style/Widget.AppCompat.Button.Colored"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="68dp"
                         android:layout_margin="30px"
                         android:background="?attr/colorPrimary"
                         android:fontFamily="sans-serif-condensed"
