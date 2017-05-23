@@ -42,11 +42,11 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/ed_txDescription"
                 android:layout_width="373dp"
                 android:layout_height="84dp"
                 android:ems="10"
-                android:hint="Escriba una breve descripción de la pasantía, especifique los conocimientos requeridos."
+                android:hint="Describa brevemente el sistema que requiere y el tipo de sistema que se requiere, y la tecnología (si es el caso) requerida."
                 android:inputType="textMultiLine" />
 
             <TextView
@@ -55,18 +55,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Posición"
+                android:text="Sistema Requerido"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/ed_txReqSistem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:ems="10"
-                android:hint="Indique el puesto de trabajo "
+                android:hint="Indique el sistema que se requiere "
                 android:inputType="textPersonName" />
 
             <TextView
@@ -75,18 +75,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Fecha de inicio"
+                android:text="Fecha de realización"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/ed_txDueDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:ems="10"
-                android:hint="Indique la fecha de inicio de la pasantía"
+                android:hint="Fecha máxima de realización"
                 android:inputType="date" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/ed_txEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"

@@ -51,7 +51,7 @@
                     android:orientation="horizontal"></LinearLayout>
 
                 <EditText
-                    android:id="@+id/editText11"
+                    android:id="@+id/txtCompanyName"
                     android:layout_width="368dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="30px"
@@ -78,8 +78,8 @@
                     android:id="@+id/option"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
+                    android:gravity="left"
+                    android:orientation="vertical"
                     android:layout_weight="0.24">
 
 
@@ -116,7 +116,7 @@
                     android:weightSum="1">
 
                     <Button
-                        android:id="@+id/button4"
+                        android:id="@+id/btNext"
                         style="@style/Widget.AppCompat.Button.Colored"
                         android:layout_width="match_parent"
                         android:layout_height="68dp"
