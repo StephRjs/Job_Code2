@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.usuario.job_code.CreateProfile"
+    android:padding="18dp"
+    android:weightSum="1">
+
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:fontFamily="Roboto"
+        android:hint="Nombre"
+        android:layout_weight="0.11" />
+
+    <EditText
+        android:id="@+id/etApellido1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:fontFamily="Roboto"
+        android:hint="Primer apellido"
+        android:layout_weight="0.04" />
+
+    <EditText
+        android:id="@+id/etApellido2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Segundo apellido"
+        android:inputType="text"
+        android:layout_weight="0.05" />
+    <EditText
+        android:id="@+id/etCellphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Teléfono"
+        android:inputType="text"
+        android:layout_weight="0.05" />
+    <EditText
+        android:id="@+id/etCurrentAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Dirección actual "
+        android:inputType="text"
+        android:layout_weight="0.05" />
+    <EditText
+        android:id="@+id/etPrimarySkill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Principal habilidad "
+        android:inputType="text"
+        android:layout_weight="0.05" />
+    <EditText
+        android:id="@+id/etMoreSkill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Otras habilidades "
+        android:inputType="text"
+        android:layout_weight="0.05" />
+    <EditText
+        android:id="@+id/etExperience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Experiencia "
+        android:inputType="text"
+        android:layout_weight="0.05" />
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Email"
+        android:inputType="text"
+        android:layout_weight="0.05" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_weight="0.08" />
+
+
+
+    <Button
+        android:id="@+id/bRegister"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20px"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:text="Crear Perfil"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
