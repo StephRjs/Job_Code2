@@ -15,12 +15,14 @@ Clase lógica que se encarga de captar los datos ingresados por la empresa y de 
 de un Web Service. Utiliza la función de volley y se encarga de mapear (diccionario de los parámetros).*/
 package com.example.usuario.job_code;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,8 +33,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,8 +43,6 @@ public class internship extends AppCompatActivity {
    private EditText description, dueDate, position, contact;
    private ProgressDialog progress;
 
-    URL url =null;
-    HttpURLConnection client= null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +62,8 @@ public class internship extends AppCompatActivity {
             public void onClick(View v) {
                 if(v == post)
                 sendPost();
+                Intent next = new Intent(internship.this, Publish.class);
+                startActivity(next);
             }
         });
     }
@@ -83,17 +83,16 @@ public class internship extends AppCompatActivity {
                 progress.dismiss();
                 try{
                 JSONObject json = new JSONObject(response);
-                Toast.makeText(getApplicationContext(),json.getString("message"), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),json.getString("message")+"", Toast.LENGTH_LONG).show();
             }catch(JSONException e){
                     e.printStackTrace();
-                    System.out.println(e.toString());
             }
             }
         },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progress.hide();
-                Toast.makeText(getApplicationContext(),error.getMessage()+"", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),error.getMessage()+"Se ha producido un error", Toast.LENGTH_LONG).show();
             }
         }){
             @Override

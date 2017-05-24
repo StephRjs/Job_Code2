@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:ems="10"
-                android:hint="Indique la fecha de inicio de la pasantía"
+                android:hint="yyyy/mm/dd"
                 android:inputType="date" />
 
             <TextView
