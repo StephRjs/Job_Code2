@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class Publish extends AppCompatActivity {
     Button next;
@@ -24,24 +25,26 @@ private RadioButton option1, option2, option3;
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (companyName.getText().equals("") || companyName.getText().equals(null))
-                    companyName.setText("Escriba el nombre de la compañia");
-                else {
+                if (company == null) {
+                    Toast.makeText(getApplicationContext(), "Debe de indicar el nombre de la empresa",
+                            Toast.LENGTH_LONG).show();
+                }else {
                     option1 = (RadioButton) findViewById(R.id.internship);
                     if (option1.isChecked()) {
                         Intent next = new Intent(Publish.this, internship.class);
-                        next.putExtra("companyName", companyName.getText()+"");
+                        next.putExtra("companyName", companyName.getText() + "");
                         startActivity(next);
                     } else {
                         option2 = (RadioButton) findViewById(R.id.service);
                         if (option2.isChecked()) {
                             Intent next = new Intent(Publish.this, Service.class);
+                            next.putExtra("companyName", companyName.getText() + "");
                             startActivity(next);
                         }
                         option3 = (RadioButton) findViewById(R.id.project);
                         if (option3.isChecked()) {
                             Intent next = new Intent(Publish.this, Project.class);
-                            next.putExtra("parametro", "string");
+                            next.putExtra("companyName", companyName.getText() + "");
                             startActivity(next);
                         }
 
