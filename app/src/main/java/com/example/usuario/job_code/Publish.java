@@ -1,3 +1,18 @@
+/*Universidad de Costa Rica
+Informática Empresarial
+IF7201 - Gestión de Proyectos
+Prof. MAP. Verny Fernández
+Proyecto Job Code
+Estudiantes:
+Paula Álvarez Barrantes – B40301
+Alejandra Anchía Pérez - B30388
+César Bolaños Brenes - B31030
+Stephanie Rojas Alfaro – A54827
+I Ciclo, 2017
+
+Clase: Publish
+Clase lógica que se encarga de captar los datos ingresados por la empresa y almacenarlos con el fin de saber
+la página a la que se les debe de redirigir según el post que deseen realizar.*/
 package com.example.usuario.job_code;
 
 import android.content.Intent;

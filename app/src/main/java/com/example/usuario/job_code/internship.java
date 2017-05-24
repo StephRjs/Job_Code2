@@ -11,8 +11,8 @@ Stephanie Rojas Alfaro – A54827
 I Ciclo, 2017
 
 Clase: internship
-Clase lógica que se encarga de captar los datos ingresados por la empresa y de guardarlos en la base de datos por medio del consumo
-de un Web Service. Utiliza la función de volley y se encarga de mapear (diccionario de los parámetros).*/
+Clase lógica que se encarga de captar los datos ingresados por la empresa y de guardarlos en la base de datos en el tipo de internship
+ por medio del consumo de un Web Service. Utiliza la función de volley y se encarga de mapear (diccionario de los parámetros).*/
 package com.example.usuario.job_code;
 import android.app.ProgressDialog;
 import android.content.Intent;
