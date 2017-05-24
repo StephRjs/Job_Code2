@@ -54,14 +54,15 @@ public class internship extends AppCompatActivity {
     }
 
     private void sendPost(){
-        final String company = companyName;
+        final String company = companyName.trim();
         final String descript = description.getText().toString().trim();
-        final String dueDat = description.getText().toString().trim();
-        final String posit = description.getText().toString().trim();
-        final String email = description.getText().toString().trim();
+        final String dueDat = dueDate.getText().toString().trim();
+        final String posit = position.getText().toString().trim();
+        final String email = contact.getText().toString().trim();
         progress.setMessage("Cargando datos...");
         progress.show();
-        StringRequest request = new StringRequest(Request.Method.POST, Constants.URL_REGISTER, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTER+"companyName="+company+"&description="+descript+
+                "&email="+email+"&dueDate="+dueDat+"&IDTypePost=1&Place_Position_SoftType="+posit, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progress.dismiss();
@@ -77,7 +78,7 @@ public class internship extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progress.hide();
-                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),error.getMessage()+"", Toast.LENGTH_LONG).show();
             }
         }){
             @Override
