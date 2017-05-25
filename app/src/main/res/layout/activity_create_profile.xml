@@ -96,8 +96,6 @@
         android:inputType="textPassword"
         android:layout_weight="0.08" />
 
-
-
     <Button
         android:id="@+id/bRegister"
         style="@style/Widget.AppCompat.Button.Colored"

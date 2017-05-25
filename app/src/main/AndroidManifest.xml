@@ -21,7 +21,11 @@
         </activity>
         <activity android:name=".internship" />
         <activity android:name=".Project" />
-        <activity android:name=".Service"></activity>
+        <activity android:name=".Service"/>
+        <activity android:name=".Login"/>
+        <activity android:name=".CreateProfile"/>
+        <activity android:name=".SingUp">
+        </activity>
     </application>
 
 </manifest>

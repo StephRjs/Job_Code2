@@ -22,7 +22,7 @@
 
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/edUser"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -38,21 +38,14 @@
         android:textSize="26dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edPassword"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:inputType="textPassword"
         android:hint="Password" />
 
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:visibility="invisible" />
-
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/bLogin"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="162dp"
         android:layout_height="wrap_content"
@@ -61,5 +54,13 @@
         android:gravity="center"
         android:text="Login"
         android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"
+        android:layout_weight="0.22" />
 
 </LinearLayout>

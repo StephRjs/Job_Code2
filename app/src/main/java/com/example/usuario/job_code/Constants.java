@@ -26,4 +26,8 @@ public class Constants {
     public static final String ROOT_URL = "http://jobcode.azurewebsites.net/Post.svc/";
     public static final String URL_REGISTER = ROOT_URL+"addPost?";
 
+    public static final String ROOT_URLL = "http://jobcode.azurewebsites.net/Login.svc/";
+    public static final String URL_REGISTERSin = ROOT_URLL+"signUp?";
+    public static final String URL_REGISTERCOMPLI = ROOT_URLL+"completeS?";
+    public static final String URL_REGISTERLoginEx = ROOT_URLL+"loginExistsS?";
 }

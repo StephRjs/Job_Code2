@@ -62,10 +62,22 @@
         android:layout_width="294dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="70px"
+        android:layout_margin="50px"
         android:background="?attr/colorPrimary"
         android:gravity="center"
         android:text="Registrar"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/bCrearPerfil"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5px"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:text="Crear Perfil"
         android:textStyle="bold" />
 
 
