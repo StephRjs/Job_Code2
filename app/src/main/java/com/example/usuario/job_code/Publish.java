@@ -4,7 +4,7 @@ IF7201 - Gestión de Proyectos
 Prof. MAP. Verny Fernández
 Proyecto Job Code
 Estudiantes:
-Paula Álvarez Barrantes – B40301
+Paula Alvarez Barrantes – B40301
 Alejandra Anchía Pérez - B30388
 César Bolaños Brenes - B31030
 Stephanie Rojas Alfaro – A54827
@@ -29,8 +29,14 @@ public class Publish extends AppCompatActivity {
     EditText companyName;
     String company;
 private RadioButton option1, option2, option3;
+    /**
+     * Método que se encarga de la construccioón y validación de la parte gráfica del
+     * sistema para hacer la publicación de ofertas.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publish);
         companyName=(EditText)findViewById(R.id.txtCompanyName);

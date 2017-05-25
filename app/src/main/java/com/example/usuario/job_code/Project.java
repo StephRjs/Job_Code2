@@ -4,7 +4,7 @@ IF7201 - Gestión de Proyectos
 Prof. MAP. Verny Fernández
 Proyecto Job Code
 Estudiantes:
-Paula Álvarez Barrantes – B40301
+Paula Alvarez Barrantes – B40301
 Alejandra Anchía Pérez - B30388
 César Bolaños Brenes - B31030
 Stephanie Rojas Alfaro – A54827
@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+//Llamados a las librerias necesarias para el funcionamiento de volley
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,7 +31,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
+/*Llamados a las librerías de JSon necesarias para el manejo de datos que se les envía y devuelven los
+Web Services*/
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,6 +46,11 @@ public class Project extends AppCompatActivity{
     private EditText description, dueDate, system, contact;
     private ProgressDialog progress;
 
+    /**
+     * Método que se encarga de sobre-escribir la construccioón y validación de la parte gráfica del
+     * sistema para la creación de la publicación de un nuevo proyecto.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +73,10 @@ public class Project extends AppCompatActivity{
         });
     }
 
-
+    /**Método para envíar un Post, captura los datos ingresados por la empresa, quita los espacios
+    * innecesarios y conforma una solicitud al web service con los datos necesarios para enviarlos
+    * @param
+    * */
     private void sendPost(){
         final String company = companyName.trim();
         final String descript = description.getText().toString().trim();
@@ -78,6 +87,10 @@ public class Project extends AppCompatActivity{
         progress.show();
         StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTER+"companyName="+company+"&description="+descript+
                 "&email="+email+"&dueDate="+dueDat+"&IDTypePost=2&Place_Position_SoftType="+posit, new Response.Listener<String>() {
+            /**Método para sobre-escribir el método onResponse, comprueba que el servicio provea de una respuesta
+            * que se encuentre disponible.
+            * @param response
+           */
             @Override
             public void onResponse(String response) {
                 progress.dismiss();
@@ -89,12 +102,20 @@ public class Project extends AppCompatActivity{
                 }
             }
         },new Response.ErrorListener() {
+            /**Método para sobre-escribir el método que escucha los errores, la presencia de un error para
+           * informar al cliente.
+           * @param error
+          */
             @Override
             public void onErrorResponse(VolleyError error) {
                 progress.hide();
                 Toast.makeText(getApplicationContext(),error.getMessage()+"Se ha producido un error", Toast.LENGTH_LONG).show();
             }
         }){
+            /**Método para sobre-escribir el método que realiza el mapa de parámetros, con el fin de generar
+           *un diccionario de todos los datos que se ingresan.
+          * @param
+         */
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
