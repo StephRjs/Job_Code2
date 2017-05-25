@@ -42,7 +42,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/ed_txDescription"
+                android:id="@+id/ed_txDescriptionS"
                 android:layout_width="373dp"
                 android:layout_height="84dp"
                 android:ems="10"
@@ -81,7 +81,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/ed_txDueDate"
+                android:id="@+id/ed_txDueDateS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
@@ -101,7 +101,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/ed_txEmail"
+                android:id="@+id/ed_txEmailS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
@@ -121,7 +121,7 @@
                 android:weightSum="1">
 
                 <Button
-                    android:id="@+id/btnPost"
+                    android:id="@+id/btn_post"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="343dp"
                     android:layout_height="62dp"
