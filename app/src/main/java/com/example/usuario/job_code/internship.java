@@ -65,23 +65,36 @@ public class internship extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(v == post)
-                sendPost();
-                Intent next = new Intent(internship.this, Publish.class);
-                startActivity(next);
+                if (description.getText().length() == 0||dueDate.getText().length() == 0||position.getText().length() == 0||contact.getText().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Debe de completar todos los datos",
+                            Toast.LENGTH_LONG).show();
+                }else {
+                    if ((!contact.getText().toString().contains("@"))  || (!contact.getText().toString().contains("."))) {
+                        Toast.makeText(getApplicationContext(), "El formato del correo es incorrecto debe contener @",
+                                Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                            if (v == post)
+                                sendPost();
+                            Intent next = new Intent(internship.this, Publish.class);
+                            startActivity(next);
+                        }
+                    }
+
             }
         });
-    }
+        }
 
     /*Método para envíar un Post, captura los datos ingresados por la empresa, quita los espacios
     * innecesarios y conforma una solicitud al web service con los datos necesarios para enviarlos
     * @param
     * */
     private void sendPost(){
-        final String company = companyName.trim();
-        final String descript = description.getText().toString().trim();
+        final String company = companyName.trim().replace(" ", "*");
+        final String descript = description.getText().toString().trim().replace(" ", "*");
         final String dueDat = dueDate.getText().toString().trim();
-        final String posit = position.getText().toString().trim();
+        final String posit = position.getText().toString().trim().replace(" ", "*");
         final String email = contact.getText().toString().trim();
         progress.setMessage("Cargando datos...");
         progress.show();
@@ -110,7 +123,7 @@ public class internship extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progress.hide();
-                Toast.makeText(getApplicationContext(),error.getMessage()+"Se ha producido un error", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Se ha producido un error", Toast.LENGTH_LONG).show();
             }
         }){
             /**Método para sobre-escribir el método que realiza el mapa de parámetros, con el fin de generar

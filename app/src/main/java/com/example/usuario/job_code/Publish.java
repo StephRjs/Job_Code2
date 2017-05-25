@@ -46,7 +46,7 @@ private RadioButton option1, option2, option3;
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (company == null) {
+                if (companyName.getText().length() == 0) {
                     Toast.makeText(getApplicationContext(), "Debe de indicar el nombre de la empresa",
                             Toast.LENGTH_LONG).show();
                 }else {

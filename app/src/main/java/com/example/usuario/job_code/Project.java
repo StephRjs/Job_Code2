@@ -65,10 +65,21 @@ public class Project extends AppCompatActivity{
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(v == post)
-                    sendPost();
-                Intent next = new Intent(Project.this, Publish.class);
-                startActivity(next);
+                if (description.getText().length() == 0||dueDate.getText().length() == 0||system.getText().length() == 0||contact.getText().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Debe de completar todos los datos",
+                            Toast.LENGTH_LONG).show();
+                }else {
+                    if ((!contact.getText().toString().contains("@")) || (!contact.getText().toString().contains("."))) {
+                        Toast.makeText(getApplicationContext(), "El formato del correo es incorrecto debe contener @",
+                                Toast.LENGTH_LONG).show();
+
+                    } else {
+                        if (v == post)
+                            sendPost();
+                        Intent next = new Intent(Project.this, Publish.class);
+                        startActivity(next);
+                    }
+                }
             }
         });
     }
@@ -78,10 +89,10 @@ public class Project extends AppCompatActivity{
     * @param
     * */
     private void sendPost(){
-        final String company = companyName.trim();
-        final String descript = description.getText().toString().trim();
+        final String company = companyName.trim().replace(" ", "*");
+        final String descript = description.getText().toString().trim().replace(" ", "*");
         final String dueDat = dueDate.getText().toString().trim();
-        final String posit = system.getText().toString().trim();
+        final String posit = system.getText().toString().trim().replace(" ", "*");
         final String email = contact.getText().toString().trim();
         progress.setMessage("Cargando datos...");
         progress.show();
