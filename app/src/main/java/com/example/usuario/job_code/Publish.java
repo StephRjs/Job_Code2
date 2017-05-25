@@ -25,7 +25,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class Publish extends AppCompatActivity {
-    Button next;
+    Button next, sign_in;
     EditText companyName;
     String company;
 private RadioButton option1, option2, option3;
@@ -41,7 +41,7 @@ private RadioButton option1, option2, option3;
         setContentView(R.layout.activity_publish);
         companyName=(EditText)findViewById(R.id.txtCompanyName);
         company= companyName.getText().toString();
-
+        sign_in = (Button)findViewById(R.id.btn_setUp);
         next= (Button)findViewById(R.id.btNext);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +71,13 @@ private RadioButton option1, option2, option3;
 
                     }
                 }
+            }
+        });
+        sign_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent s_in = new Intent(Publish.this, SingUp.class);
+                startActivity(s_in);
             }
         });
     }
