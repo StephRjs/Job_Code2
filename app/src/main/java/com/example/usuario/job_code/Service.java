@@ -145,5 +145,12 @@ public class Service extends AppCompatActivity {
         rQ.add(request);
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String n) {
+        companyName = n;
+    }
 }
 

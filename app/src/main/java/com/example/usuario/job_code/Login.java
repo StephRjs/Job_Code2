@@ -97,5 +97,12 @@ private boolean loginStatus = true;
         rQ.add(request);
     }
 
+    public void setLoginStatus(boolean n) {
+        loginStatus = n;
+    }
+
+    public boolean getLoginStatus() {
+        return loginStatus;
+    }
 }
 

@@ -82,4 +82,11 @@ private RadioButton option1, option2, option3;
         });
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String n) {
+        company = n;
+    }
 }

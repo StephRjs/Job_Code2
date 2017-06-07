@@ -148,5 +148,21 @@ public class internship extends AppCompatActivity {
     }
 
 
+    public String getCompanyName() {
+        return companyName;
+    }
 
+    public void setCompanyName(String n) {
+        companyName = n;
+    }
+
+    public String getDescription() {
+
+        return description.getText().toString();
+    }
+
+    public void setDescription(String n) {
+
+        description.setText(n);
+    }
 }
