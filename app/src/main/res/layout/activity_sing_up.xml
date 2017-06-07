@@ -10,7 +10,7 @@
     android:padding="18dp"
     android:weightSum="1">
 
-        <EditText
+    <EditText
             android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,6 +78,18 @@
         android:background="?attr/colorPrimary"
         android:gravity="center"
         android:text="Crear Perfil"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/bLogin"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5px"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:text="Iniciar Sesión"
         android:textStyle="bold" />
 
 

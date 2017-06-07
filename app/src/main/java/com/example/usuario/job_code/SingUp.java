@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class SingUp extends AppCompatActivity {
     EditText Nombre,Primerapellido,Segundoapellido,Email,Password;
-    Button Register;
+    Button Register, createProfile, login;
     private ProgressDialog progress;
 
     URL url =null;
@@ -42,7 +42,8 @@ public class SingUp extends AppCompatActivity {
         Email = (EditText) findViewById(R.id.etEmail);
         Password = (EditText) findViewById(R.id.etPassword);
         Register = (Button) findViewById(R.id.bRegister);
-
+        createProfile = (Button) findViewById(R.id.bCrearPerfil);
+        login = (Button) findViewById(R.id.bLogin);
         progress= new ProgressDialog(this);
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +52,20 @@ public class SingUp extends AppCompatActivity {
                     sendPost();
                 /*Intent next = new Intent(SingUp.this, CreateProfile.class);
                 startActivity(next);*/
+            }
+        });
+        createProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent s_in = new Intent(SingUp.this, CreateProfile.class);
+                startActivity(s_in);
+            }
+        });
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent s_in = new Intent(SingUp.this, Login.class);
+                startActivity(s_in);
             }
         });
     }
