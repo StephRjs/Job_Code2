@@ -24,7 +24,8 @@
         <activity android:name=".Service"/>
         <activity android:name=".Login"/>
         <activity android:name=".CreateProfile"/>
-        <activity android:name=".SingUp">
+        <activity android:name=".SingUp"/>
+        <activity android:name=".ListStudents">
         </activity>
     </application>
 

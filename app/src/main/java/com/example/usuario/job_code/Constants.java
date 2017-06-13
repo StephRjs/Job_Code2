@@ -30,4 +30,5 @@ public class Constants {
     public static final String URL_REGISTERSin = ROOT_URLL+"signUp?";
     public static final String URL_REGISTERCOMPLI = ROOT_URLL+"completeS?";
     public static final String URL_REGISTERLoginEx = ROOT_URLL+"loginExistsS?";
+    public static final String URL_AllStudents = ROOT_URLL+"allstudents";
 }
