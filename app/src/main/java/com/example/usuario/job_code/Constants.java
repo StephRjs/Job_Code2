@@ -31,4 +31,6 @@ public class Constants {
     public static final String URL_REGISTERLoginEx = ROOT_URLL+"loginExistsS?";
     public static final String URL_AllStudents = ROOT_URLL+"allstudents";
     public static final String URL_GETALLPOST = "http://jobcode.azurewebsites.net/Post.svc/getAllPosts?";
+    public static final String ROOT_URLcode = "http://jobcode.azurewebsites.net/Code.svc/";
+    public static final String URL_INSERTCODE = ROOT_URLcode+"insertRandomCode?";
 }

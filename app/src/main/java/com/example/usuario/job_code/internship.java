@@ -18,6 +18,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +37,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
+
+import java.lang.Math.*;
+import java.util.Random;
 
 public class internship extends AppCompatActivity {
 
@@ -77,6 +81,8 @@ public class internship extends AppCompatActivity {
 
                             if (v == post)
                                 sendPost();
+                                saveRandomCode();
+
                             Intent next = new Intent(internship.this, Publish.class);
                             startActivity(next);
                         }
@@ -147,6 +153,62 @@ public class internship extends AppCompatActivity {
         rQ.add(request);
     }
 
+    private void saveRandomCode(){
 
+        String randomCode = random();
 
+        sendEmail(randomCode);
+
+        StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_INSERTCODE+"code="+randomCode, new Response.Listener<String>() {
+            /**Método para sobre-escribir el método onResponse, comprueba que el servicio provea de una respuesta
+             *que se encuentre disponible.
+             * @param response
+             */
+            @Override
+            public void onResponse(String response) {
+                try{
+                    JSONObject json = new JSONObject(response);
+                    Toast.makeText(getApplicationContext(),json.getString("message")+"", Toast.LENGTH_LONG).show();
+                }catch(JSONException e){
+                    e.printStackTrace();
+                }
+            }
+
+        },new Response.ErrorListener() {
+            /**Método para sobre-escribir el método que escucha los errores, la presencia de un error para
+             *informar al cliente.
+             * @param
+             */
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"Se ha producido un error", Toast.LENGTH_LONG).show();
+            }
+        });
+        RequestQueue rQ = Volley.newRequestQueue(this);
+        rQ.add(request);
+    }
+
+    private void sendEmail(String randomCode) {
+        try {
+            GMailSender sender = new GMailSender("jobcode00@gmail.com", "jobcode1201");
+            sender.sendMail("This is Subject",
+                    "This is Body",
+                    "jobcode00@gmail.com",
+                    this.contact.toString());
+        } catch (Exception e) {
+            Log.e("SendMail", e.getMessage(), e);
+        }
+    }
+
+    private String random() {
+        Random generator = new Random();
+        StringBuilder randomStringBuilder = new StringBuilder();
+        int randomLength = generator.nextInt(6);
+        char tempChar;
+        for (int i = 0; i < randomLength; i++){
+            tempChar = (char) (generator.nextInt(96) + 32);
+            randomStringBuilder.append(tempChar);
+        }
+        return randomStringBuilder.toString();
+    }
 }
