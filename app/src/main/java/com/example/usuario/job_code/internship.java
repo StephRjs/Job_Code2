@@ -38,7 +38,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import java.lang.Math.*;
 import java.util.Random;
 
 public class internship extends AppCompatActivity {
@@ -81,7 +80,7 @@ public class internship extends AppCompatActivity {
 
                             if (v == post)
                                 sendPost();
-                                saveRandomCode();
+                                //saveRandomCode();
 
                             Intent next = new Intent(internship.this, Publish.class);
                             startActivity(next);
@@ -168,7 +167,6 @@ public class internship extends AppCompatActivity {
             public void onResponse(String response) {
                 try{
                     JSONObject json = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),json.getString("message")+"", Toast.LENGTH_LONG).show();
                 }catch(JSONException e){
                     e.printStackTrace();
                 }
@@ -181,7 +179,7 @@ public class internship extends AppCompatActivity {
              */
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"Se ha producido un error", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Se ha producido un error email", Toast.LENGTH_LONG).show();
             }
         });
         RequestQueue rQ = Volley.newRequestQueue(this);
@@ -194,21 +192,16 @@ public class internship extends AppCompatActivity {
             sender.sendMail("This is Subject",
                     "This is Body",
                     "jobcode00@gmail.com",
-                    this.contact.toString());
+                    this.contact.getText().toString());
         } catch (Exception e) {
             Log.e("SendMail", e.getMessage(), e);
         }
     }
 
     private String random() {
-        Random generator = new Random();
-        StringBuilder randomStringBuilder = new StringBuilder();
-        int randomLength = generator.nextInt(6);
-        char tempChar;
-        for (int i = 0; i < randomLength; i++){
-            tempChar = (char) (generator.nextInt(96) + 32);
-            randomStringBuilder.append(tempChar);
-        }
-        return randomStringBuilder.toString();
+        //Random rnd = new Random();
+        //int n = 100000 + rnd.nextInt(900000);
+        //System.out.println(Integer.toString(n));
+        return "qwerty";
     }
 }
