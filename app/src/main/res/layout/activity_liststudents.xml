@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.usuario.job_code.JobsFeedBack">
+    >
 
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="67dp"
+       android:orientation="horizontal"
+       android:weightSum="1">
+
+      <ImageView
+          android:id="@+id/logo"
+          android:layout_width="184dp"
+          android:layout_height="match_parent"
+          app:srcCompat="@mipmap/logo"
+          tools:layout_editor_absoluteX="123dp"
+          tools:layout_editor_absoluteY="38dp"
+          android:layout_weight="0.97" />
+
+
+   </LinearLayout>
+
+   <TextView
+       android:id="@+id/label"
+       android:layout_width="match_parent"
+       android:layout_height="58dp"
+       android:text="Perfil de Estudiantes"
+       android:textAlignment="center"
+       android:textColor="@color/colorPrimaryDark"
+       android:textSize="30sp"
+       android:textStyle="bold" />
 
    <ListView
        android:id="@+id/list"

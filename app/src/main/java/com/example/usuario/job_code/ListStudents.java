@@ -1,37 +1,33 @@
 package com.example.usuario.job_code;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-
-import java.security.AccessControlContext;
-import java.util.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.android.volley.toolbox.JsonArrayRequest;
-import org.json.JSONObject;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-import static java.security.AccessController.getContext;
 
 /**
  * Created by alvar on 6/11/2017.
@@ -71,7 +67,7 @@ public class ListStudents extends AppCompatActivity {
                         lastname2 = row.getString("lastname2");
                         primarySkill = row.getString("primarySkill");
                        cellphone = row.getString("cellphone");
-                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ". Habilidad Principal: "+ primarySkill + ".  Email: " + email + " .Teléfono: " + cellphone);
+                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: "+ primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
 
                     }
                     ArrayAdapter ad = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, l);
