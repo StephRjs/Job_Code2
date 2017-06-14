@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.usuario.job_code">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,19 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Publish">
+
+        </activity>
+        <activity android:name=".internship" />
+        <activity android:name=".Project" />
+        <activity android:name=".Service" />
+        <activity android:name=".Login" />
+        <activity android:name=".CreateProfile" />
+        <activity android:name=".SingUp" />
+        <activity android:name=".ListStudents" />
+        <activity android:name=".JobsFeedBack" />
+        <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".internship" />
-        <activity android:name=".Project" />
-        <activity android:name=".Service"/>
-        <activity android:name=".Login"/>
-        <activity android:name=".CreateProfile"/>
-        <activity android:name=".SingUp"/>
-        <activity android:name=".ListStudents">
         </activity>
     </application>
 

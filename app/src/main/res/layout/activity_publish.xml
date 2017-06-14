@@ -122,25 +122,9 @@
                         android:weightSum="1">
 
                         <Button
-                            android:id="@+id/btn_setUp"
-                            style="@style/Widget.AppCompat.Button.Colored"
-                            android:layout_width="181dp"
-                            android:layout_height="68dp"
-                            android:layout_margin="30px"
-                            android:background="?attr/colorPrimary"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="Sign in"
-                            android:textAllCaps="false"
-                            android:textSize="24sp"
-                            android:textStyle="bold"
-                            tools:layout_editor_absoluteX="8dp"
-                            tools:layout_editor_absoluteY="356dp"
-                            android:layout_weight="0.93" />
-
-                        <Button
                             android:id="@+id/btNext"
                             style="@style/Widget.AppCompat.Button.Colored"
-                            android:layout_width="181dp"
+                            android:layout_width="match_parent"
                             android:layout_height="68dp"
                             android:layout_margin="30px"
                             android:background="?attr/colorPrimary"
