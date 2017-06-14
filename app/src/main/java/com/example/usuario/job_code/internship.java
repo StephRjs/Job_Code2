@@ -80,7 +80,7 @@ public class internship extends AppCompatActivity {
 
                             if (v == post)
                                 sendPost();
-                                //saveRandomCode();
+                                saveRandomCode();
 
                             Intent next = new Intent(internship.this, Publish.class);
                             startActivity(next);
@@ -199,9 +199,9 @@ public class internship extends AppCompatActivity {
     }
 
     private String random() {
-        //Random rnd = new Random();
-        //int n = 100000 + rnd.nextInt(900000);
-        //System.out.println(Integer.toString(n));
-        return "qwerty";
+        Random rnd = new Random();
+        int n = 100000 + rnd.nextInt(900000);
+        System.out.println(Integer.toString(n));
+        return Integer.toString(n);
     }
 }
