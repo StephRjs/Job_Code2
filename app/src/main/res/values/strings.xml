@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Job_Code</string>
+
+<string name="type">Filtrar por tipo..</string>
+
+<string-array name="type_arrays">
+    <item>Filtrar</item>
+    <item>Pasantías</item>
+    <item>Servicios Estudiantiles</item>
+    <item>Proyectos</item>
+</string-array>
+
 </resources>
