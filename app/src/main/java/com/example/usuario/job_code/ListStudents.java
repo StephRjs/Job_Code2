@@ -2,8 +2,10 @@ package com.example.usuario.job_code;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.*;
 import android.widget.ListView;
@@ -57,9 +59,15 @@ public class ListStudents extends AppCompatActivity {
                 String lastname2;
                 String primarySkill;
                 String cellphone;
+                String currentAddress;
+                String experience;
+                String moreSkills;
+
+
 
                 ListView lis = (ListView)findViewById(R.id.list);
-                List <String> l = new ArrayList<String>();
+                 final List <String> l = new ArrayList<String>();
+                final ArrayList<String> milista = new ArrayList<String>();
 
 
                 try {
@@ -71,11 +79,32 @@ public class ListStudents extends AppCompatActivity {
                         lastname2 = row.getString("lastname2");
                         primarySkill = row.getString("primarySkill");
                        cellphone = row.getString("cellphone");
-                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ". Habilidad Principal: "+ primarySkill + ".  Email: " + email + " .Teléfono: " + cellphone);
+                       currentAddress = row.getString("currentAddress");
+                        experience = row.getString("experience");
+                        moreSkills = row.getString("moreSkills");
 
+                        l.add("Nombre:" + name + " " + lastname1 + " " + lastname2 + ". Habilidad Principal: "+ primarySkill + ".  Email: " + email + " .Teléfono: " + cellphone);
+                        milista.add("Nombre:" + name + "" + lastname1 + "" + lastname2 +" .     Teléfono: " + cellphone +".       Email:" + email + ".       Dirección: "+currentAddress+".    Habilidad Principal: "+ primarySkill +".  Otras Habilidades:"+
+                                moreSkills+ ". Experiencia: " + experience);
                     }
                     ArrayAdapter ad = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, l);
                     lis.setAdapter (ad);
+                    lis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            Intent myintent = new Intent(view.getContext(),SeeStudent.class);
+                            //myintent.getParcelableArrayListExtra(l.get(position));
+                           // myintent.putExtra("num",l.get(p
+                            myintent.putExtra("posicion",position);
+
+                            myintent.putExtra("miLista", milista);
+
+                            startActivity(myintent);
+
+
+                        }
+                    });
 
 
                 }catch (JSONException e){
