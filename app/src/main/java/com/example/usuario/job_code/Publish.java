@@ -63,7 +63,7 @@ private RadioButton option1, option2, option3;
                         }
                         option3 = (RadioButton) findViewById(R.id.project);
                         if (option3.isChecked()) {
-                            Intent next = new Intent(Publish.this, Project.class);
+                            Intent next = new Intent(Publish.this,Login.class);
                             next.putExtra("companyName", companyName.getText() + "");
                             startActivity(next);
                         }
