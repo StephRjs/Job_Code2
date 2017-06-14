@@ -1,9 +1,11 @@
 package com.example.usuario.job_code;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
+import android.widget.*;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,64 +17,86 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.security.AccessControlContext;
+import java.util.*;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import com.android.volley.toolbox.JsonArrayRequest;
+import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.security.AccessController.getContext;
+
 /**
  * Created by alvar on 6/11/2017.
  */
 
 public class ListStudents extends AppCompatActivity {
+
     private ProgressDialog progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststudents);
-        ListView list = (ListView)findViewById(android.R.id.list);
 
-
-        String[] cars = {"car1", "car2", "car3"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(list.getContext(),android.R.layout.simple_list_item_1, cars);
-        list.setAdapter(adapter);
-        progress.setMessage("Cargando datos...");
-        progress.show();
-        final StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_AllStudents,
-                new Response.Listener<String>() {
+        String url = "http://jobcode.azurewebsites.net/Login.svc/allstudents?";
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
-            public void onResponse(String response) {
-                progress.dismiss();
-                try{
-                    JSONObject json = new JSONObject(response);
-                   // File file = new File (json.getInputStream());
-                    //InputStream f = new FileInputStream(file);
-                    Student s = new Student();
-                    //s.readJsonStream(f);
+            public void onResponse(JSONArray jsonObject) {
+                String email;
+                String name;
+                String lastname1;
+                String lastname2;
+                String primarySkill;
+                String cellphone;
 
-                }catch(JSONException e){
+                ListView lis = (ListView)findViewById(R.id.list);
+                List <String> l = new ArrayList<String>();
+
+
+                try {
+                    for (int i = 0; i < jsonObject.length(); i++) {
+                        JSONObject row = jsonObject.getJSONObject(i);
+                        email = row.getString("email");
+                        name = row.getString("name");
+                        lastname1 = row.getString("lastname1");
+                        lastname2 = row.getString("lastname2");
+                        primarySkill = row.getString("primarySkill");
+                       cellphone = row.getString("cellphone");
+                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ". Habilidad Principal: "+ primarySkill + ".  Email: " + email + " .Teléfono: " + cellphone);
+
+                    }
+                    ArrayAdapter ad = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, l);
+                    lis.setAdapter (ad);
+
+
+                }catch (JSONException e){
                     e.printStackTrace();
                     System.out.println(e.toString());
                 }
+
+
+
+
             }
-        },new Response.ErrorListener() {
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progress.hide();
                 Toast.makeText(getApplicationContext(),error.getMessage()+"", Toast.LENGTH_LONG).show();
             }
-        }){
-
-
-        };
+        });
         RequestQueue rQ = Volley.newRequestQueue(this);
         rQ.add(request);
+
     }
 
 

@@ -4,8 +4,7 @@ import org.json.JSONObject;
 import org.json.JSONException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import javax.json.Json;
-import javax.json.JsonObject;
+
 import java.util.List;
 import java.util.ArrayList;
 import android.util.JsonReader;
@@ -68,6 +67,14 @@ public class Student {
 
     public String getPrimarySkill() {
         return primarySkill;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Student> readJsonStream(InputStream in) throws IOException {
