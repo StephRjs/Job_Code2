@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class Main extends AppCompatActivity {
-    Button bt_student;
-    Button bt_company;
+    private Button bt_student;
+    private Button bt_company;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
