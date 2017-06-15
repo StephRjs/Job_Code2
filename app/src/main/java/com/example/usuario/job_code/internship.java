@@ -47,7 +47,7 @@ public class internship extends AppCompatActivity {
    private String companyName;
    private EditText description, dueDate, position, contact;
    private ProgressDialog progress;
-
+    private String random;
     /**
      * Método que se encarga de sobre-escribir la construccioón y validación de la parte gráfica del
      * sistema para la creación de la publicación de una nueva pasantía.
@@ -106,7 +106,7 @@ public class internship extends AppCompatActivity {
         final String posit = position.getText().toString().trim().replace(" ", "*");
         final String email = contact.getText().toString().trim();
 
-        String random = random();
+        random = random();
 
         CodeEmailTask task = new CodeEmailTask();
         task.execute();
@@ -182,9 +182,12 @@ public class internship extends AppCompatActivity {
         private void sendEmail() {
             try {
                 GMailSender sender = new GMailSender("jobcode00@gmail.com", "jobcode1201");
-                sender.sendMail("This is Subject",
-                        "This is Body",
-                        "jobcode00@gmail.com",
+                sender.sendMail("Codigo de Verficacion - JobCode",
+                        "Estimado usuario:\n\nUsted ha recibido este correo gracias a que registró una publicacion en nuestra APP"
+                        + "movil JobCode.\n"+"Su codigo de verificacion es: " + random + "\nMediante este codigo usted podrá tener acceso"
+                        + "a informacion sobre los estudiantes registrados, y asi poder poder contactarles en caso de requerir sus servicios"
+                        + "profesionales.\n\nGracias por usar nuestra APP!\n\nJobCode@2017",
+                        "Admin@JobCode",
                         contact.getText().toString());
             } catch (Exception e) {
                 Log.e("SendMail", e.getMessage(), e);
