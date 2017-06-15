@@ -79,16 +79,16 @@ public class internship extends AppCompatActivity {
 
                     } else {
 
-                            if (v == post)
-
+                            if (v == post) {
 
                                 sendPost();
                                 //saveRandomCode();
                                 CodeEmailTask task = new CodeEmailTask();
                                 task.execute();
 
-                            Intent next = new Intent(internship.this, Publish.class);
-                            startActivity(next);
+                                Intent next = new Intent(internship.this, Publish.class);
+                                startActivity(next);
+                            }
                         }
                     }
 
@@ -106,10 +106,13 @@ public class internship extends AppCompatActivity {
         final String dueDat = dueDate.getText().toString().trim();
         final String posit = position.getText().toString().trim().replace(" ", "*");
         final String email = contact.getText().toString().trim();
+
+        String random = random();
+
         progress.setMessage("Cargando datos...");
         progress.show();
         StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTER+"companyName="+company+"&description="+descript+
-                "&email="+email+"&dueDate="+dueDat+"&IDTypePost=1&Place_Position_SoftType="+posit, new Response.Listener<String>() {
+                "&email="+email+"&dueDate="+dueDat+"&IDTypePost=1&Place_Position_SoftType="+posit+"&code="+random, new Response.Listener<String>() {
             /**Método para sobre-escribir el método onResponse, comprueba que el servicio provea de una respuesta
             *que se encuentre disponible.
             * @param response
@@ -157,51 +160,24 @@ public class internship extends AppCompatActivity {
         rQ.add(request);
     }
 
-    private void saveRandomCode(){
-
-
+    private String random() {
+        Random rnd = new Random();
+        int n = 1000 + rnd.nextInt(9000);
+        System.out.println(Integer.toString(n));
+        return Integer.toString(n);
     }
 
 
     private class CodeEmailTask extends AsyncTask<Void, Integer, Boolean> {
 
         protected Boolean doInBackground(Void... params) {
-            String randomCode = random();
-
-            sendEmail(randomCode);
-
-            StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_INSERTCODE+"code="+randomCode, new Response.Listener<String>() {
-                /**Método para sobre-escribir el método onResponse, comprueba que el servicio provea de una respuesta
-                 *que se encuentre disponible.
-                 * @param response
-                 */
-                @Override
-                public void onResponse(String response) {
-                    try{
-                        JSONObject json = new JSONObject(response);
-                    }catch(JSONException e){
-                        e.printStackTrace();
-                    }
-                }
-
-            },new Response.ErrorListener() {
-                /**Método para sobre-escribir el método que escucha los errores, la presencia de un error para
-                 *informar al cliente.
-                 * @param
-                 */
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(),"Se ha producido un error email", Toast.LENGTH_LONG).show();
-                }
-            });
-            RequestQueue rQ = Volley.newRequestQueue(getApplicationContext());
-            rQ.add(request);
+            sendEmail();
 
             return true;
         }
 
 
-        private void sendEmail(String randomCode) {
+        private void sendEmail() {
             try {
                 GMailSender sender = new GMailSender("jobcode00@gmail.com", "jobcode1201");
                 sender.sendMail("This is Subject",
@@ -211,14 +187,6 @@ public class internship extends AppCompatActivity {
             } catch (Exception e) {
                 Log.e("SendMail", e.getMessage(), e);
             }
-        }
-
-
-        private String random() {
-            Random rnd = new Random();
-            int n = 100000 + rnd.nextInt(900000);
-            System.out.println(Integer.toString(n));
-            return Integer.toString(n);
         }
 
         protected void onProgressUpdate(Integer... values) {
