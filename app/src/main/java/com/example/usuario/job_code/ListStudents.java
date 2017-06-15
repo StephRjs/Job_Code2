@@ -61,7 +61,7 @@ public class ListStudents extends AppCompatActivity {
                 String experience;
                 String moreSkills;
 
-                
+
                 ListView lis = (ListView)findViewById(R.id.list);
                   List <String> l = new ArrayList<String>();
                 final ArrayList<String> miListaStu = new ArrayList<String>();

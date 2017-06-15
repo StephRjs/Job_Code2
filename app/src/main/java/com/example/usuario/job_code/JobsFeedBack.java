@@ -34,6 +34,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
+
 public class JobsFeedBack extends AppCompatActivity {
     private Button bt_singIn;
     private Button bt_setUp;
@@ -85,8 +87,9 @@ public class JobsFeedBack extends AppCompatActivity {
                 String description;
                 String email;
                 String dueDate;
-                Date date1= null;
+                String date1= null;
                 Date date2= null;
+
 
                 ListView jobs = (ListView)findViewById(R.id.lv_jobs);
                 List<String> l = new ArrayList<String>();
@@ -104,14 +107,6 @@ public class JobsFeedBack extends AppCompatActivity {
                         email = row.getString("email");
                         dueDate= row.getString("dueDate");
                         date1= JsonDateToDate(dueDate);
-
-                        /*SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                        try {
-                            date1= JsonDateToDate(dueDate);
-                            date2 = formato.parse(dueDate);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }*/
 
 
                         if((postType.equals("Internship")) && (type.equals("Pasantías"))){
@@ -191,15 +186,19 @@ public class JobsFeedBack extends AppCompatActivity {
         rQ.add(request);
 
     }
-    public static Date JsonDateToDate(String jsonDate)
+    public static String JsonDateToDate(String jsonDate)
     {
-        //  "/Date(1321867151710+0100)/"
-        int idx1 = jsonDate.indexOf("(");
-        int idx2 = jsonDate.indexOf(")") - 5;
-        String s = jsonDate.substring(idx1+1, idx2);
-        long l = Long.valueOf(s);
-        return new Date(l);
+     
+
+        jsonDate=jsonDate.replace("/Date(", "").replace("+0000)/", "");
+        long time = Long.parseLong(jsonDate);
+        Date d= new Date(time);
+        return  new SimpleDateFormat("MM/dd/yyyy").format(d);
+
+
     }
+
+
 
 
 }
