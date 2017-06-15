@@ -10,15 +10,17 @@ import java.util.ArrayList;
 public class SeeStudent extends AppCompatActivity {
     TextView texto;
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_student);
         texto = (TextView) findViewById(R.id.txNombre);
         Intent intent = getIntent();
-       Bundle extras = intent.getExtras();
+        Bundle extras = intent.getExtras();
         int dato = extras.getInt("posicion");
-        ArrayList<String> lista = (ArrayList<String>) getIntent().getStringArrayListExtra("miLista");
-        texto.setText(lista.get(dato));
+        ArrayList<String> miListaStu = (ArrayList<String>) getIntent().getStringArrayListExtra("miListaStu");
+        texto.setText(miListaStu.get(dato));
 
 
     }

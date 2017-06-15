@@ -65,9 +65,9 @@ public class ListStudents extends AppCompatActivity {
 
                 ListView lis = (ListView)findViewById(R.id.list);
                   List <String> l = new ArrayList<String>();
-                final ArrayList<String> milista = new ArrayList<String>();
+                final ArrayList<String> miListaStu = new ArrayList<String>();
 
-
+                
                 try {
                     for (int i = 0; i < jsonObject.length(); i++) {
                         JSONObject row = jsonObject.getJSONObject(i);
@@ -84,7 +84,7 @@ public class ListStudents extends AppCompatActivity {
                         moreSkills = row.getString("moreSkills");
 
                         l.add("Nombre:" + name + " " + lastname1 + " " + lastname2 + ". Habilidad Principal: "+ primarySkill + ".  Email: " + email + " .Teléfono: " + cellphone);
-                        milista.add("Nombre: " + name + " " + lastname1 + " " + lastname2 +"\nTeléfono : " + cellphone +"\nEmail: " + email + "\nDirección: "+currentAddress+"\nHabilidad Principal: "+ primarySkill +"\nOtras Habilidades:  "+
+                        miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 +"\nTeléfono : " + cellphone +"\nEmail: " + email + "\nDirección: "+currentAddress+"\nHabilidad Principal: "+ primarySkill +"\nOtras Habilidades:  "+
                                 moreSkills+ "\nExperiencia:  " + experience);
                     }
                     ArrayAdapter ad = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, l);
@@ -95,7 +95,7 @@ public class ListStudents extends AppCompatActivity {
 
                             Intent myintent = new Intent(view.getContext(),SeeStudent.class);
                             myintent.putExtra("posicion",position);
-                            myintent.putExtra("miLista", milista);
+                            myintent.putExtra("miListaStu", miListaStu);
                             startActivity(myintent);
 
                         }

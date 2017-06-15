@@ -20,6 +20,6 @@ public class DetailOffer extends AppCompatActivity {
         ArrayList<String> lista = (ArrayList<String>) getIntent().getStringArrayListExtra("miLista");
         texto.setText(lista.get(dato));
 
-        
+
     }
 }
