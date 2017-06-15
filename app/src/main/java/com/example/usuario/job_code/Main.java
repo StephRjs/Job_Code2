@@ -16,7 +16,7 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bt_company = (Button)findViewById(R.id.bt_company);
         bt_student = (Button)findViewById(R.id.bt_student);
-        bt_student = (Button)findViewById(R.id.bt_list);
+        bt_list = (Button)findViewById(R.id.bt_list);
         bt_company.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +32,7 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        bt_student.setOnClickListener(new View.OnClickListener() {
+        bt_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent next = new Intent(Main.this, ListStudents.class);
