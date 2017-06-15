@@ -124,7 +124,7 @@ public class internship extends AppCompatActivity {
                 progress.dismiss();
                 try{
                 JSONObject json = new JSONObject(response);
-                Toast.makeText(getApplicationContext(),json.getString("message")+"", Toast.LENGTH_LONG).show();
+               Toast.makeText(getApplicationContext(),json.getString("message")+"", Toast.LENGTH_LONG).show();
             }catch(JSONException e){
                     e.printStackTrace();
             }
