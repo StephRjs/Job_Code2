@@ -162,7 +162,7 @@ public class internship extends AppCompatActivity {
 
     private String random() {
         Random rnd = new Random();
-        int n = 100000 + rnd.nextInt(900000);
+        int n = 1000 + rnd.nextInt(9000);
         System.out.println(Integer.toString(n));
         return Integer.toString(n);
     }
