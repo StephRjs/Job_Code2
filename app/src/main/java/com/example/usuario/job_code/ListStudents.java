@@ -61,13 +61,12 @@ public class ListStudents extends AppCompatActivity {
                 String experience;
                 String moreSkills;
 
-
-
+                
                 ListView lis = (ListView)findViewById(R.id.list);
                   List <String> l = new ArrayList<String>();
                 final ArrayList<String> miListaStu = new ArrayList<String>();
 
-                
+
                 try {
                     for (int i = 0; i < jsonObject.length(); i++) {
                         JSONObject row = jsonObject.getJSONObject(i);
@@ -77,15 +76,13 @@ public class ListStudents extends AppCompatActivity {
                         lastname2 = row.getString("lastname2");
                         primarySkill = row.getString("primarySkill");
                        cellphone = row.getString("cellphone");
-                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: "+ primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
-
-                       currentAddress = row.getString("currentAddress");
+                        currentAddress = row.getString("currentAddress");
                         experience = row.getString("experience");
                         moreSkills = row.getString("moreSkills");
 
-                        l.add("Nombre:" + name + " " + lastname1 + " " + lastname2 + ". Habilidad Principal: "+ primarySkill + ".  Email: " + email + " .Teléfono: " + cellphone);
+                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: "+ primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
                         miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 +"\nTeléfono : " + cellphone +"\nEmail: " + email + "\nDirección: "+currentAddress+"\nHabilidad Principal: "+ primarySkill +"\nOtras Habilidades:  "+
-                                moreSkills+ "\nExperiencia:  " + experience);
+                                moreSkills+ "\nExperiencia:" + experience);
                     }
                     ArrayAdapter ad = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, l);
                     lis.setAdapter (ad);
