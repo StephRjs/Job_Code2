@@ -83,8 +83,7 @@ public class internship extends AppCompatActivity {
 
                                 sendPost();
                                 //saveRandomCode();
-                                CodeEmailTask task = new CodeEmailTask();
-                                task.execute();
+
 
                                 Intent next = new Intent(internship.this, Publish.class);
                                 startActivity(next);
@@ -108,6 +107,9 @@ public class internship extends AppCompatActivity {
         final String email = contact.getText().toString().trim();
 
         String random = random();
+
+        CodeEmailTask task = new CodeEmailTask();
+        task.execute();
 
         progress.setMessage("Cargando datos...");
         progress.show();
