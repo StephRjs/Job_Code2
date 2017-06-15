@@ -108,7 +108,7 @@ public class Service extends AppCompatActivity {
         progress.setMessage("Cargando datos...");
         progress.show();
         StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTER+"companyName="+company+"&description="+descript+
-                "&email="+email+"&dueDate="+dueDat+"&IDTypePost=3&Place_Position_SoftType="+place_postion_softType+"code="+random, new Response.Listener<String>() {
+                "&email="+email+"&dueDate="+dueDat+"&IDTypePost=3&Place_Position_SoftType="+place_postion_softType+"&code="+random, new Response.Listener<String>() {
             /**Método para sobre-escribir el método onResponse, comprueba que el servicio provea de una respuesta
              * que se encuentre disponible.
              * @param response
