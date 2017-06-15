@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,7 +26,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class JobsFeedBack extends AppCompatActivity {
@@ -76,9 +82,15 @@ public class JobsFeedBack extends AppCompatActivity {
                 String companyName;
                 String postType;
                 String position;
+                String description;
+                String email;
+                String dueDate;
+                Date date1= null;
+                Date date2= null;
 
                 ListView jobs = (ListView)findViewById(R.id.lv_jobs);
                 List<String> l = new ArrayList<String>();
+                final ArrayList<String> milista = new ArrayList<String>();
                 String type = spin_types.getSelectedItem().toString();
                 try {
                     for (int i = 0; i < jsonObject.length(); i++) {
@@ -88,30 +100,56 @@ public class JobsFeedBack extends AppCompatActivity {
                         postType = row.getString("postType");
                         position = row.getString("placePositionSoftType");
                         position = position.replace('*',' ');
+                        description = row.getString("description");
+                        email = row.getString("email");
+                        dueDate= row.getString("dueDate");
+                        date1= JsonDateToDate(dueDate);
+
+                        /*SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                        try {
+                            date1= JsonDateToDate(dueDate);
+                            date2 = formato.parse(dueDate);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }*/
+
+
                         if((postType.equals("Internship")) && (type.equals("Pasantías"))){
                             postType = "Pasantía";
                             l.add(companyName + "\nTipo de oferta: " + postType + "\nPosición: "+ position);
+                            milista.add(companyName+ "\nTipo de oferta: " + postType + "\nPosición: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
+                                    "\nFecha de Vencimiento: " + date1 );
                             }else {
                             if((postType.equals("Project")) && (type.equals("Proyectos"))){
                                 postType= "Proyecto";
                                 l.add(companyName + "\nTipo de oferta: " + postType + "\nSoftware: "+ position);
+                                milista.add(companyName+ "\nTipo de oferta: " + postType + "\nSoftware: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
+                                        "\nFecha de Vencimiento: " + date1 );
                             }else {
                                 if ((postType.equals("Service")) && (type.equals("Servicios Estudiantiles"))){
                                     postType = "Servicio estudiantil";
                                     l.add(companyName + "\nTipo de oferta: " + postType + "\nLugar: " + position);
+                                    milista.add(companyName+ "\nTipo de oferta: " + postType + "\nLugar: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
+                                            "\nFecha de Vencimiento: " + date1 );
                                 }else{
                                     if(type.equals("Filtrar")){
                                         if(postType.equals("Internship")) {
                                             postType = "Pasantía";
                                         l.add(companyName + "\nTipo de oferta: " + postType + "\nPosición: "+ position);
+                                            milista.add(companyName+ "\nTipo de oferta: " + postType + "\nPosición: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
+                                                    "\nFecha de Vencimiento: " + date1 );
                                     }else {
                                         if(postType.equals("Project")){
                                             postType= "Proyecto";
                                             l.add(companyName + "\nTipo de oferta: " + postType + "\nSoftware: "+ position);
+                                            milista.add(companyName+ "\nTipo de oferta: " + postType + "\nSoftware: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
+                                                    "\nFecha de Vencimiento: " + date1 );
                                         }else {
                                             if (postType.equals("Service")){
                                                 postType = "Servicio estudiantil";
                                                 l.add(companyName + "\nTipo de oferta: " + postType + "\nLugar: " + position);
+                                                milista.add(companyName+ "\nTipo de oferta: " + postType + "\nLugar: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
+                                                        "\nFecha de Vencimiento: " + date1 );
                                             }
                                         }
                                     }
@@ -125,6 +163,16 @@ public class JobsFeedBack extends AppCompatActivity {
                     }
                     ArrayAdapter ad = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, l);
                     jobs.setAdapter (ad);
+                    jobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            Intent myintent = new Intent(view.getContext(),DetailOffer.class);
+                            myintent.putExtra("posicion",position);
+                            myintent.putExtra("miLista", milista);
+                            startActivity(myintent);
+                        }
+                    });
 
                 }catch (JSONException e){
                     e.printStackTrace();
@@ -143,7 +191,21 @@ public class JobsFeedBack extends AppCompatActivity {
         rQ.add(request);
 
     }
+    public static Date JsonDateToDate(String jsonDate)
+    {
+        //  "/Date(1321867151710+0100)/"
+        int idx1 = jsonDate.indexOf("(");
+        int idx2 = jsonDate.indexOf(")") - 5;
+        String s = jsonDate.substring(idx1+1, idx2);
+        long l = Long.valueOf(s);
+        return new Date(l);
+    }
+
+
 }
+
+
+
 
 
 

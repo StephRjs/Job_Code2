@@ -66,7 +66,7 @@ public class ListStudents extends AppCompatActivity {
 
 
                 ListView lis = (ListView)findViewById(R.id.list);
-                 final List <String> l = new ArrayList<String>();
+                  List <String> l = new ArrayList<String>();
                 final ArrayList<String> milista = new ArrayList<String>();
 
 
@@ -94,12 +94,8 @@ public class ListStudents extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                             Intent myintent = new Intent(view.getContext(),SeeStudent.class);
-                            //myintent.getParcelableArrayListExtra(l.get(position));
-                           // myintent.putExtra("num",l.get(p
                             myintent.putExtra("posicion",position);
-
                             myintent.putExtra("miLista", milista);
-
                             startActivity(myintent);
 
 
