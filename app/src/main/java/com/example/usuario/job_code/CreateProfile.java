@@ -54,6 +54,7 @@ public class CreateProfile extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(v == Register)
                     sendPost();
             }
@@ -77,6 +78,7 @@ public class CreateProfile extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTERCOMPLI+"email="+Emai+"&password="+Passwor+
                 "&name="+Nombr+"&lastname1="+Primerapellid+"&lastname2="+Segundoapellid+"&cellphone="+Telefon+"&currentAddress="+Direccionactua+"&primarySkill="+Principalhabilida+
                 "&moreSkills="+Otrashabilidad+"&experience="+Experienci, new Response.Listener<String>() {
+
             @Override
             public void onResponse(String response) {
                 progress.dismiss();
