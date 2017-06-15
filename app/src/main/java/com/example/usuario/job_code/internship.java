@@ -182,11 +182,11 @@ public class internship extends AppCompatActivity {
         private void sendEmail() {
             try {
                 GMailSender sender = new GMailSender("jobcode00@gmail.com", "jobcode1201");
-                sender.sendMail("Codigo de Verficacion - JobCode",
-                        "Estimado usuario:\n\nUsted ha recibido este correo gracias a que registró una publicacion en nuestra APP"
-                        + "movil JobCode.\n"+"Su codigo de verificacion es: " + random + "\nMediante este codigo usted podrá tener acceso"
-                        + "a informacion sobre los estudiantes registrados, y asi poder poder contactarles en caso de requerir sus servicios"
-                        + "profesionales.\n\nGracias por usar nuestra APP!\n\nJobCode@2017",
+                sender.sendMail("Código de Verficación - JobCode",
+                        "Estimado usuario:\n\n\nUsted ha recibido este correo gracias a que registró una publicación en nuestra APP "
+                        + "móvil JobCode.\n\n"+"Su código de verificación es: " + random + "\n\nMediante este código usted podrá tener acceso "
+                        + "a información sobre los estudiantes registrados, y así poder contactarles en caso de requerir sus servicios "
+                        + "profesionales.\n\n\nGracias por usar nuestra APP!\n\nJobCode@2017",
                         "Admin@JobCode",
                         contact.getText().toString());
             } catch (Exception e) {
