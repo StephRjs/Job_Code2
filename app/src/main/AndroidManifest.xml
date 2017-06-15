@@ -14,9 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Publish">
-
-        </activity>
+        <activity android:name=".Publish" />
         <activity android:name=".internship" />
         <activity android:name=".Project" />
         <activity android:name=".Service" />
@@ -32,6 +30,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SeeStudent" />
+        <activity android:name=".DetailOffer"></activity>
     </application>
 
 </manifest>
