@@ -97,8 +97,7 @@ public class ListStudents extends AppCompatActivity {
                             myintent.putExtra("posicion",position);
                             myintent.putExtra("miLista", milista);
                             startActivity(myintent);
-
-
+                            
                         }
                     });
 
