@@ -85,7 +85,7 @@ public class internship extends AppCompatActivity {
                                 //saveRandomCode();
 
 
-                                Intent next = new Intent(internship.this, Publish.class);
+                                Intent next = new Intent(internship.this, Main.class);
                                 startActivity(next);
                             }
                         }

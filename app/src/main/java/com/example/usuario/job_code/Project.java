@@ -80,7 +80,7 @@ public class Project extends AppCompatActivity{
                     } else {
                         if (v == post)
                             sendPost();
-                        Intent next = new Intent(Project.this, Publish.class);
+                        Intent next = new Intent(Project.this, Main.class);
                         startActivity(next);
                     }
                 }

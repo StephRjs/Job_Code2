@@ -82,7 +82,7 @@ public class Service extends AppCompatActivity {
                     } else {
                         if (v == post)
                             sendPost();
-                        Intent next = new Intent(Service.this, Publish.class);
+                        Intent next = new Intent(Service.this, Main.class);
                         startActivity(next);
                     }
                 }
