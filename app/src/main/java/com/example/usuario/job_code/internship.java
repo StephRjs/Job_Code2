@@ -47,7 +47,7 @@ public class internship extends AppCompatActivity {
    private String companyName;
    private EditText description, dueDate, position, contact;
    private ProgressDialog progress;
-
+    private String random;
     /**
      * Método que se encarga de sobre-escribir la construccioón y validación de la parte gráfica del
      * sistema para la creación de la publicación de una nueva pasantía.
@@ -83,8 +83,7 @@ public class internship extends AppCompatActivity {
 
                                 sendPost();
                                 //saveRandomCode();
-                                CodeEmailTask task = new CodeEmailTask();
-                                task.execute();
+
 
                                 Intent next = new Intent(internship.this, Publish.class);
                                 startActivity(next);
@@ -107,7 +106,10 @@ public class internship extends AppCompatActivity {
         final String posit = position.getText().toString().trim().replace(" ", "*");
         final String email = contact.getText().toString().trim();
 
-        String random = random();
+        random = random();
+
+        CodeEmailTask task = new CodeEmailTask();
+        task.execute();
 
         progress.setMessage("Cargando datos...");
         progress.show();
@@ -122,7 +124,7 @@ public class internship extends AppCompatActivity {
                 progress.dismiss();
                 try{
                 JSONObject json = new JSONObject(response);
-                Toast.makeText(getApplicationContext(),json.getString("message")+"", Toast.LENGTH_LONG).show();
+               Toast.makeText(getApplicationContext(),json.getString("message")+"", Toast.LENGTH_LONG).show();
             }catch(JSONException e){
                     e.printStackTrace();
             }
@@ -180,9 +182,12 @@ public class internship extends AppCompatActivity {
         private void sendEmail() {
             try {
                 GMailSender sender = new GMailSender("jobcode00@gmail.com", "jobcode1201");
-                sender.sendMail("This is Subject",
-                        "This is Body",
-                        "jobcode00@gmail.com",
+                sender.sendMail("Código de Verficación - JobCode",
+                        "Estimado usuario:\n\n\nUsted ha recibido este correo gracias a que registró una publicación en nuestra APP "
+                        + "móvil JobCode.\n\n"+"Su código de verificación es: " + random + "\n\nMediante este código usted podrá tener acceso "
+                        + "a información sobre los estudiantes registrados, y así poder contactarles en caso de requerir sus servicios "
+                        + "profesionales.\n\n\nGracias por usar nuestra APP!\n\nJobCode@2017",
+                        "Admin@JobCode",
                         contact.getText().toString());
             } catch (Exception e) {
                 Log.e("SendMail", e.getMessage(), e);

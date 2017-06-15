@@ -17,8 +17,10 @@ package com.example.usuario.job_code;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +40,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Project extends AppCompatActivity{
 
@@ -45,6 +48,7 @@ public class Project extends AppCompatActivity{
     private String companyName;
     private EditText description, dueDate, system, contact;
     private ProgressDialog progress;
+    private String random;
 
     /**
      * Método que se encarga de sobre-escribir la construccioón y validación de la parte gráfica del
@@ -94,10 +98,16 @@ public class Project extends AppCompatActivity{
         final String dueDat = dueDate.getText().toString().trim();
         final String posit = system.getText().toString().trim().replace(" ", "*");
         final String email = contact.getText().toString().trim();
+
+        random = random();
+
+        CodeEmailTask task = new CodeEmailTask();
+        task.execute();
+
         progress.setMessage("Cargando datos...");
         progress.show();
         StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTER+"companyName="+company+"&description="+descript+
-                "&email="+email+"&dueDate="+dueDat+"&IDTypePost=2&Place_Position_SoftType="+posit, new Response.Listener<String>() {
+                "&email="+email+"&dueDate="+dueDat+"&IDTypePost=2&Place_Position_SoftType="+posit+"&code="+random, new Response.Listener<String>() {
             /**Método para sobre-escribir el método onResponse, comprueba que el servicio provea de una respuesta
             * que se encuentre disponible.
             * @param response
@@ -144,6 +154,52 @@ public class Project extends AppCompatActivity{
         rQ.add(request);
     }
 
+    private String random() {
+        Random rnd = new Random();
+        int n = 1000 + rnd.nextInt(9000);
+        System.out.println(Integer.toString(n));
+        return Integer.toString(n);
+    }
 
+
+    private class CodeEmailTask extends AsyncTask<Void, Integer, Boolean> {
+
+        protected Boolean doInBackground(Void... params) {
+            sendEmail();
+
+            return true;
+        }
+
+
+        private void sendEmail() {
+            try {
+                GMailSender sender = new GMailSender("jobcode00@gmail.com", "jobcode1201");
+                sender.sendMail("Código de Verficación - JobCode",
+                        "Estimado usuario:\n\n\nUsted ha recibido este correo gracias a que registró una publicación en nuestra APP "
+                                + "móvil JobCode.\n\n"+"Su código de verificación es: " + random + "\n\nMediante este código usted podrá tener acceso "
+                                + "a información sobre los estudiantes registrados, y así poder contactarles en caso de requerir sus servicios "
+                                + "profesionales.\n\n\nGracias por usar nuestra APP!\n\nJobCode@2017",
+                        "Admin@JobCode",
+                        contact.getText().toString());
+            } catch (Exception e) {
+                Log.e("SendMail", e.getMessage(), e);
+            }
+        }
+
+        protected void onProgressUpdate(Integer... values) {
+        }
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+
+        protected void onPostExecute(Boolean result) {
+        }
+
+
+        protected void onCancelled() {
+        }
+    }
 
 }
