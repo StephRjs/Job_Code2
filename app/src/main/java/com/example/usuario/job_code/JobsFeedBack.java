@@ -105,15 +105,6 @@ public class JobsFeedBack extends AppCompatActivity {
                         dueDate= row.getString("dueDate");
                         date1= JsonDateToDate(dueDate);
 
-                        /*SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                        try {
-                            date1= JsonDateToDate(dueDate);
-                            date2 = formato.parse(dueDate);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }*/
-
-
                         if((postType.equals("Internship")) && (type.equals("Pasantías"))){
                             postType = "Pasantía";
                             l.add(companyName + "\nTipo de oferta: " + postType + "\nPosición: "+ position);

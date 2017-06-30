@@ -38,15 +38,30 @@ import java.util.List;
  */
 
 public class ListStudents extends AppCompatActivity {
-
+    private Spinner spin_types;
     private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststudents);
+        spin_types= (Spinner)findViewById(R.id.spin_students);
+        spin_types.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                getAllStudents();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+    }
+
+    public void getAllStudents(){
         String url = "http://jobcode.azurewebsites.net/Login.svc/allstudents?";
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -61,12 +76,11 @@ public class ListStudents extends AppCompatActivity {
                 String experience;
                 String moreSkills;
 
-                
-                ListView lis = (ListView)findViewById(R.id.list);
-                  List <String> l = new ArrayList<String>();
+
+                ListView lis = (ListView) findViewById(R.id.list);
+                List<String> l = new ArrayList<String>();
                 final ArrayList<String> miListaStu = new ArrayList<String>();
-
-
+                String type = spin_types.getSelectedItem().toString();
                 try {
                     for (int i = 0; i < jsonObject.length(); i++) {
                         JSONObject row = jsonObject.getJSONObject(i);
@@ -75,17 +89,73 @@ public class ListStudents extends AppCompatActivity {
                         lastname1 = row.getString("lastname1");
                         lastname2 = row.getString("lastname2");
                         primarySkill = row.getString("primarySkill");
-                       cellphone = row.getString("cellphone");
+                        cellphone = row.getString("cellphone");
                         currentAddress = row.getString("currentAddress");
                         experience = row.getString("experience");
                         moreSkills = row.getString("moreSkills");
 
-                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: "+ primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
-                        miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 +"\nTeléfono : " + cellphone +"\nEmail: " + email + "\nDirección: "+currentAddress+"\nHabilidad Principal: "+ primarySkill +"\nOtras Habilidades:  "+
-                                moreSkills+ "\nExperiencia:" + experience);
-                    }
+                        if ((primarySkill.equals("Redes")) && (type.equals("Redes"))) {
+                            primarySkill = "Redes";
+                            l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: "+ primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
+                            miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 +"\nTeléfono : " + cellphone +"\nEmail: " + email + "\nDirección: "+currentAddress+"\nHabilidad Principal: "+ primarySkill +"\nOtras Habilidades:  "+
+                                    moreSkills+ "\nExperiencia:" + experience);
+                        } else {
+                            if ((primarySkill.equals("Front-End")) && (type.equals("Front-End"))) {
+                                primarySkill = "Front-End";
+                                l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: " + primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
+                                miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + "\nTeléfono : " + cellphone + "\nEmail: " + email + "\nDirección: " + currentAddress + "\nHabilidad Principal: " + primarySkill + "\nOtras Habilidades:  " +
+                                        moreSkills + "\nExperiencia:" + experience);
+                            } else {
+                                if ((primarySkill.equals("Back-End")) && (type.equals("Back-End"))) {
+                                    primarySkill = "Back-End";
+                                    l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: " + primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
+                                    miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + "\nTeléfono : " + cellphone + "\nEmail: " + email + "\nDirección: " + currentAddress + "\nHabilidad Principal: " + primarySkill + "\nOtras Habilidades:  " +
+                                            moreSkills + "\nExperiencia:" + experience);
+                                } else {
+                                    if ((primarySkill.equals("Base de Datos")) && (type.equals("Base de Datos"))) {
+                                        primarySkill = "Base de Datos";
+                                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: " + primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
+                                        miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + "\nTeléfono : " + cellphone + "\nEmail: " + email + "\nDirección: " + currentAddress + "\nHabilidad Principal: " + primarySkill + "\nOtras Habilidades:  " +
+                                                moreSkills + "\nExperiencia:" + experience);
+                                    }  else {
+                                            if (type.equals("Filtrar")) {
+                                                if (primarySkill.equals("Redes")) {
+                                                    primarySkill = "Redes";
+                                                    l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: " + primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
+                                                    miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + "\nTeléfono : " + cellphone + "\nEmail: " + email + "\nDirección: " + currentAddress + "\nHabilidad Principal: " + primarySkill + "\nOtras Habilidades:  " +
+                                                            moreSkills + "\nExperiencia:" + experience);
+                                                } else {
+                                                    if (primarySkill.equals("Front-End")) {
+                                                        primarySkill = "Front-End";
+                                                        l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: " + primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
+                                                        miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + "\nTeléfono : " + cellphone + "\nEmail: " + email + "\nDirección: " + currentAddress + "\nHabilidad Principal: " + primarySkill + "\nOtras Habilidades:  " +
+                                                                moreSkills + "\nExperiencia:" + experience);
+                                                    } else {
+                                                        if (primarySkill.equals("Back-End")) {
+                                                            primarySkill = "Back-End";
+                                                            l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: " + primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
+                                                            miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + "\nTeléfono : " + cellphone + "\nEmail: " + email + "\nDirección: " + currentAddress + "\nHabilidad Principal: " + primarySkill + "\nOtras Habilidades:  " +
+                                                                    moreSkills + "\nExperiencia:" + experience);
+                                                        } else {
+                                                            if (primarySkill.equals("Base de Datos")) {
+                                                                primarySkill = "Base de Datos";
+                                                                l.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + ".\nHabilidad Principal: " + primarySkill + ".  \nEmail: " + email + ". \nTeléfono: " + cellphone);
+                                                                miListaStu.add("Nombre: " + name + " " + lastname1 + " " + lastname2 + "\nTeléfono : " + cellphone + "\nEmail: " + email + "\nDirección: " + currentAddress + "\nHabilidad Principal: " + primarySkill + "\nOtras Habilidades:  " +
+                                                                        moreSkills + "\nExperiencia:" + experience);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
                     ArrayAdapter ad = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, l);
-                    lis.setAdapter (ad);
+                    lis.setAdapter(ad);
                     lis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -94,16 +164,13 @@ public class ListStudents extends AppCompatActivity {
                             myintent.putExtra("posicion",position);
                             myintent.putExtra("miListaStu", miListaStu);
                             startActivity(myintent);
-
                         }
                     });
 
-
-                }catch (JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                     System.out.println(e.toString());
                 }
-
 
             }
         }, new Response.ErrorListener() {

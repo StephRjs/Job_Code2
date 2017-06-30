@@ -130,7 +130,7 @@ public class Project extends AppCompatActivity{
             @Override
             public void onErrorResponse(VolleyError error) {
                 progress.hide();
-                Toast.makeText(getApplicationContext(),error.getMessage()+"Se ha producido un error", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),error.getMessage()+"Se ha producido un error" , Toast.LENGTH_LONG).show();
             }
         }){
             /**Método para sobre-escribir el método que realiza el mapa de parámetros, con el fin de generar
