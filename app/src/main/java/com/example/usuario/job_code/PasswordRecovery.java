@@ -1,6 +1,7 @@
 package com.example.usuario.job_code;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -61,7 +63,7 @@ public class PasswordRecovery extends AppCompatActivity {
 
         progress.setMessage("Cargando...");
         progress.show();
-        StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTERSin +"email="+email+"&password="+newPassword
+        StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_FORGOTPASS +"email="+email+"&password="+newPassword
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -73,6 +75,9 @@ public class PasswordRecovery extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Correo enviado correctamente!", Toast.LENGTH_LONG).show();
                         EmailTask task = new EmailTask();
                         task.execute();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Ha ocurrido un error. Intente de nuevo!",
+                                Toast.LENGTH_LONG).show();
                     }
                 }catch(JSONException e){
                     e.printStackTrace();
