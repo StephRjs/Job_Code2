@@ -31,7 +31,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SeeStudent" />
-        <activity android:name=".DetailOffer"></activity>
+        <activity android:name=".DetailOffer" />
+        <activity android:name=".PasswordRecovery"></activity>
     </application>
 
 </manifest>

@@ -47,7 +47,7 @@ public class internship extends AppCompatActivity {
    private String companyName;
    private EditText description, dueDate, position, contact;
    private ProgressDialog progress;
-    private String random;
+        private String random;
     /**
      * Método que se encarga de sobre-escribir la construccioón y validación de la parte gráfica del
      * sistema para la creación de la publicación de una nueva pasantía.
@@ -165,7 +165,6 @@ public class internship extends AppCompatActivity {
     private String random() {
         Random rnd = new Random();
         int n = 1000 + rnd.nextInt(9000);
-        System.out.println(Integer.toString(n));
         return Integer.toString(n);
     }
 
