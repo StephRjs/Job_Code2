@@ -31,7 +31,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".SeeStudent" />
-        <activity android:name=".DetailOffer"></activity>
+        <activity android:name=".DetailOffer" />
+
+        <service
+            android:name=".SendNotification">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".recieve">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

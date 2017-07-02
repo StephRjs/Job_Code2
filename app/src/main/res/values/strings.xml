@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Job_Code</string>
 
-    <string name="type">Filtrar por tipo..</string>
+    <string name="type">Filtrar por tipo...</string>
 
     <string-array name="type_arrays">
         <item>Filtrar</item>
@@ -9,5 +9,16 @@
         <item>Servicios Estudiantiles</item>
         <item>Proyectos</item>
     </string-array>
+
+    <string name="primarySkill">Filtrar por habilidad...</string>
+
+    <string-array name="primarySkill_Array">
+        <item>Filtrar</item>
+        <item>Redes</item>
+        <item>Front-End</item>
+        <item>Back-End</item>
+        <item>Base de Datos</item>
+    </string-array>
+
 
 </resources>

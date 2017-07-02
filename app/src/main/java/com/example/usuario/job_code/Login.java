@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,6 +30,7 @@ public class Login extends AppCompatActivity {
 
     private Button Login,signUp;
     private EditText Username, Password;
+    private TextView ForgotPassword;
     private ProgressDialog progress;
     private boolean loginStatus = true;
     URL url =null;
@@ -46,6 +48,7 @@ public class Login extends AppCompatActivity {
 
         Login = (Button) findViewById(R.id.bLogin);
 
+        ForgotPassword = (TextView) findViewById(R.id.forgotPassword);
         Username = (EditText) findViewById(R.id.edUser);
         Password = (EditText) findViewById(R.id.edPassword);
         Login = (Button) findViewById(R.id.bLogin);
@@ -67,6 +70,14 @@ public class Login extends AppCompatActivity {
                        sendPost();
                     }
                 }
+            }
+        });
+
+        ForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next = new Intent(Login.this, PasswordRecovery.class);
+                startActivity(next);
             }
         });
     }
