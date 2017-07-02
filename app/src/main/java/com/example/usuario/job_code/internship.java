@@ -36,6 +36,11 @@ import com.android.volley.toolbox.Volley;
 Web Services*/
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -168,6 +173,25 @@ public class internship extends AppCompatActivity {
         return Integer.toString(n);
     }
 
+    private String expirationDate(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateInString = dueDate.getText().toString().trim();
+        String expirationDate = "";
+        try {
+
+            Date date = formatter.parse(dateInString);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.add(Calendar.DAY_OF_YEAR, 3);
+
+            expirationDate = formatter.format(calendar.getTime());
+
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return expirationDate;
+    }
 
     private class CodeEmailTask extends AsyncTask<Void, Integer, Boolean> {
 
@@ -179,13 +203,14 @@ public class internship extends AppCompatActivity {
 
 
         private void sendEmail() {
+            String importantDate = expirationDate();
             try {
                 GMailSender sender = new GMailSender("jobcode00@gmail.com", "jobcode1201");
                 sender.sendMail("Código de Verficación - JobCode",
                         "Estimado usuario:\n\n\nUsted ha recibido este correo gracias a que registró una publicación en nuestra APP "
                         + "móvil JobCode.\n\n"+"Su código de verificación es: " + random + "\n\nMediante este código usted podrá tener acceso "
                         + "a información sobre los estudiantes registrados, y así poder contactarles en caso de requerir sus servicios "
-                        + "profesionales.\n\n\nGracias por usar nuestra APP!\n\nJobCode@2017",
+                        + "profesionales."+"\n\n\nLa fecha de expiración de su anuncio será: "+ importantDate +"\n\n\nGracias por usar nuestra APP!\n\nJobCode@2017",
                         "Admin@JobCode",
                         contact.getText().toString());
             } catch (Exception e) {
