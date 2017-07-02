@@ -50,7 +50,7 @@ public class PasswordRecovery extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Debe de ingresar un correo electrónico válido",
                             Toast.LENGTH_LONG).show();
                 }else {
-                    if(v == Email)
+                    if(v == Send)
                         sendEmail();
                 }
             }
