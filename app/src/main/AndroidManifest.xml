@@ -32,6 +32,7 @@
         </activity>
         <activity android:name=".SeeStudent" />
         <activity android:name=".DetailOffer" />
+        <activity android:name=".PasswordRecovery" />
 
         <service
             android:name=".SendNotification">
