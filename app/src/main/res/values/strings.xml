@@ -23,6 +23,7 @@
     <string name="technology">Filtrar por tecnología...</string>
 
     <string-array name="technology">
+        <item>Seleccione..</item>
         <item>Java</item>
         <item>C#</item>
         <item>HTML/CSS</item>

@@ -217,7 +217,7 @@ public class internship extends AppCompatActivity {
             calendar.setTime(date);
             calendar.add(Calendar.DAY_OF_YEAR, 3);
 
-            expirationDate = formatter.format(calendar.getTime());
+            return formatter.format(calendar.getTime()).toString();
 
         }catch (ParseException e) {
             e.printStackTrace();
