@@ -177,9 +177,8 @@ public class Service extends AppCompatActivity {
         }
 
         private String expirationDate(){
-
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            String dateInString = dueDate.getText().toString().trim();
+            String dateInString = dueDate.getText().toString().trim().replace("/", "-");
             String expirationDate = "";
             try {
 
@@ -195,13 +194,14 @@ public class Service extends AppCompatActivity {
 
             return expirationDate;
         }
+
         private void sendEmail() {
             String importantDate = expirationDate();
             try {
                 GMailSender sender = new GMailSender("jobcode00@gmail.com", "jobcode1201");
                 sender.sendMail("Código de Verficación - JobCode",
                         "Estimado usuario:\n\n\nUsted ha recibido este correo gracias a que registró una publicación en nuestra APP "
-                                + "móvil JobCode.\n\n"+"Su código de verificación es: " + random + "\n\nMediante este código usted podrá tener acceso "
+                                + "móvil JobCode.\n\n"+"Su código de verificación es: " + random + "\nMediante este código usted podrá tener acceso "
                                 + "a información sobre los estudiantes registrados, y así poder contactarles en caso de requerir sus servicios "
                                 + "profesionales."+"\n\n\nLa fecha de expiración de su anuncio será: "+ importantDate +"\n\n\nGracias por usar nuestra APP!\n\nJobCode@2017",
                         "Admin@JobCode",

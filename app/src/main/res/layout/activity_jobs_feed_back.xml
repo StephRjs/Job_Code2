@@ -57,18 +57,34 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/spin_types"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:background="@android:color/background_light"
-            android:entries="@array/type_arrays"
-            android:prompt="@string/type" />
+            android:layout_height="64dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spin_types"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:background="@android:color/background_light"
+                android:entries="@array/type_arrays"
+                android:prompt="@string/type" />
+
+            <Spinner
+                android:id="@+id/spinner_tech"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@android:color/background_light"
+                android:entries="@array/technology"
+                android:prompt="@string/technology"
+                android:visibility="invisible" />
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/lv_jobs"
-            android:layout_width="match_parent"
-            android:layout_height="370dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="293dp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

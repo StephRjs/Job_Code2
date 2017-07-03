@@ -53,6 +53,7 @@ public class Login extends AppCompatActivity {
         Password = (EditText) findViewById(R.id.edPassword);
         Login = (Button) findViewById(R.id.bLogin);
         progress= new ProgressDialog(this);
+
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,8 +77,10 @@ public class Login extends AppCompatActivity {
         ForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(Login.this, PasswordRecovery.class);
-                startActivity(next);
+                if(v == ForgotPassword) {
+                    Intent next = new Intent(Login.this, PasswordRecovery.class);
+                    startActivity(next);
+                }
             }
         });
     }
