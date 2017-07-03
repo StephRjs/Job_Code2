@@ -38,7 +38,8 @@ public class JobsFeedBack extends AppCompatActivity {
     private Button bt_singIn;
     private Button bt_setUp;
     private ProgressDialog progress;
-    private Spinner spin_types;
+    private Spinner spin_types, spinner_tech;
+    private String tech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,18 @@ public class JobsFeedBack extends AppCompatActivity {
         bt_setUp = (Button)findViewById(R.id.bt_setUp);
         bt_singIn= (Button)findViewById(R.id.bt_singin);
         spin_types= (Spinner)findViewById(R.id.spin_types);
+        spinner_tech= (Spinner)findViewById(R.id.spinner_tech);
+        spinner_tech.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               getAllPost();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         spin_types.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -108,7 +121,7 @@ public class JobsFeedBack extends AppCompatActivity {
                         if((postType.equals("Internship")) && (type.equals("Pasantías"))){
                             postType = "Pasantía";
                             l.add(companyName + "\nTipo de oferta: " + postType + "\nPosición: "+ position);
-                            milista.add(companyName+ "\nTipo de oferta: " + postType + "\nPosición: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
+                            milista.add(companyName+ "\nTipo de oferta: " + postType + "\nTecnología: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
                                     "\nFecha de Vencimiento: " + date1 );
                             }else {
                             if((postType.equals("Project")) && (type.equals("Proyectos"))){
@@ -127,7 +140,7 @@ public class JobsFeedBack extends AppCompatActivity {
                                         if(postType.equals("Internship")) {
                                             postType = "Pasantía";
                                         l.add(companyName + "\nTipo de oferta: " + postType + "\nPosición: "+ position);
-                                            milista.add(companyName+ "\nTipo de oferta: " + postType + "\nPosición: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
+                                            milista.add(companyName+ "\nTipo de oferta: " + postType + "\nTecnología: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
                                                     "\nFecha de Vencimiento: " + date1 );
                                     }else {
                                         if(postType.equals("Project")){

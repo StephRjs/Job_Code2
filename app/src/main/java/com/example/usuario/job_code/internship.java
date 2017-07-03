@@ -21,8 +21,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 //Llamados a las librerias necesarias para el funcionamiento de volley
 import com.android.volley.AuthFailureError;
@@ -50,9 +52,11 @@ public class internship extends AppCompatActivity {
 
    private Button post;
    private String companyName;
-   private EditText description, dueDate, position, contact;
+    private Spinner pos;
+   private EditText description, dueDate, contact;
    private ProgressDialog progress;
         private String random;
+    private String posit;
     /**
      * Método que se encarga de sobre-escribir la construccioón y validación de la parte gráfica del
      * sistema para la creación de la publicación de una nueva pasantía.
@@ -66,7 +70,36 @@ public class internship extends AppCompatActivity {
         companyName = getIntent().getExtras().getString("companyName");
         description = (EditText) findViewById(R.id.ed_txDescription);
         dueDate = (EditText) findViewById(R.id.ed_txDueDate);
-        position = (EditText) findViewById(R.id.ed_txPosition);
+        pos = (Spinner) findViewById(R.id.spin_tech);
+        pos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(position == 1){
+                       posit = "Java";
+                 }
+                if(position == 2){
+                    posit = "C#";
+                }
+                if(position == 3){
+                    posit = "HTML/CSS";
+                }
+                if(position == 4){
+                    posit = "Android/IOS";
+                }
+                if(position == 5){
+                    posit = "SQL/Oracle";
+                }
+                if(position == 6){
+                    posit = "Otra";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         contact = (EditText) findViewById(R.id.ed_txEmail);
         post = (Button) findViewById(R.id.btPost);
 
@@ -74,7 +107,7 @@ public class internship extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (description.getText().length() == 0||dueDate.getText().length() == 0||position.getText().length() == 0||contact.getText().length() == 0) {
+                if (description.getText().length() == 0||dueDate.getText().length() == 0||contact.getText().length() == 0) {
                     Toast.makeText(getApplicationContext(), "Debe de completar todos los datos",
                             Toast.LENGTH_LONG).show();
                 }else {
@@ -108,7 +141,7 @@ public class internship extends AppCompatActivity {
         final String company = companyName.trim().replace(" ", "*");
         final String descript = description.getText().toString().trim().replace(" ", "*");
         final String dueDat = dueDate.getText().toString().trim();
-        final String posit = position.getText().toString().trim().replace(" ", "*");
+        final String positi = posit;
         final String email = contact.getText().toString().trim();
 
         random = random();
@@ -129,7 +162,7 @@ public class internship extends AppCompatActivity {
                 progress.dismiss();
                 try{
                 JSONObject json = new JSONObject(response);
-               Toast.makeText(getApplicationContext(),json.getString("message")+"", Toast.LENGTH_LONG).show();
+               Toast.makeText(getApplicationContext(),json.getString("message")+"Hubo respuesta", Toast.LENGTH_LONG).show();
             }catch(JSONException e){
                     e.printStackTrace();
             }

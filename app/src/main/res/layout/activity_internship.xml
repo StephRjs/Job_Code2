@@ -55,19 +55,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Posición"
+                android:text="Tecnología"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/ed_txPosition"
+            <Spinner
+                android:id="@+id/spin_tech"
+                style="@style/AppTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.35"
-                android:ems="10"
-                android:hint="Indique el puesto de trabajo "
-                android:inputType="textPersonName" />
+                android:background="@android:color/background_light"
+                android:entries="@array/technology"
+                android:prompt="@string/technology" />
 
             <TextView
                 android:id="@+id/textView7"
