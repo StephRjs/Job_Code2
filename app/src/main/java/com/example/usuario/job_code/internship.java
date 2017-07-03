@@ -74,24 +74,9 @@ public class internship extends AppCompatActivity {
         pos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(position == 1){
-                       posit = "Java";
-                 }
-                if(position == 2){
-                    posit = "C#";
-                }
-                if(position == 3){
-                    posit = "HTML/CSS";
-                }
-                if(position == 4){
-                    posit = "Android/IOS";
-                }
-                if(position == 5){
-                    posit = "SQL/Oracle";
-                }
-                if(position == 6){
-                    posit = "Otra";
-                }
+
+                       posit = pos.getSelectedItem().toString();
+
             }
 
             @Override
@@ -107,7 +92,7 @@ public class internship extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (description.getText().length() == 0||dueDate.getText().length() == 0||contact.getText().length() == 0) {
+                if (description.getText().length() == 0||posit.equals("Seleccione..")||dueDate.getText().length() == 0||contact.getText().length() == 0) {
                     Toast.makeText(getApplicationContext(), "Debe de completar todos los datos",
                             Toast.LENGTH_LONG).show();
                 }else {
@@ -141,7 +126,6 @@ public class internship extends AppCompatActivity {
         final String company = companyName.trim().replace(" ", "*");
         final String descript = description.getText().toString().trim().replace(" ", "*");
         final String dueDat = dueDate.getText().toString().trim();
-        final String positi = posit;
         final String email = contact.getText().toString().trim();
 
         random = random();
@@ -153,10 +137,12 @@ public class internship extends AppCompatActivity {
         progress.show();
         StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTER+"companyName="+company+"&description="+descript+
                 "&email="+email+"&dueDate="+dueDat+"&IDTypePost=1&Place_Position_SoftType="+posit+"&code="+random, new Response.Listener<String>() {
+
             /**Método para sobre-escribir el método onResponse, comprueba que el servicio provea de una respuesta
             *que se encuentre disponible.
             * @param response
            */
+
             @Override
             public void onResponse(String response) {
                 progress.dismiss();
@@ -198,6 +184,13 @@ public class internship extends AppCompatActivity {
         };
         RequestQueue rQ = Volley.newRequestQueue(this);
         rQ.add(request);
+        this.sendPush(company);
+    }
+
+    private void sendPush(String company){
+        SendNotification push = new SendNotification();
+
+
     }
 
     private String random() {

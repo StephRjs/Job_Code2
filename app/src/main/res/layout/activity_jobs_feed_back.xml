@@ -76,14 +76,15 @@
                 android:layout_height="55dp"
                 android:background="@android:color/background_light"
                 android:entries="@array/technology"
-                android:prompt="@string/technology" />
+                android:prompt="@string/technology"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
         <ListView
             android:id="@+id/lv_jobs"
             android:layout_width="wrap_content"
-            android:layout_height="316dp" />
+            android:layout_height="293dp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -105,6 +105,7 @@ public class JobsFeedBack extends AppCompatActivity {
                 List<String> l = new ArrayList<String>();
                 final ArrayList<String> milista = new ArrayList<String>();
                 String type = spin_types.getSelectedItem().toString();
+                tech = spinner_tech.getSelectedItem().toString();
                 try {
                     for (int i = 0; i < jsonObject.length(); i++) {
                         JSONObject row = jsonObject.getJSONObject(i);
@@ -120,9 +121,37 @@ public class JobsFeedBack extends AppCompatActivity {
 
                         if((postType.equals("Internship")) && (type.equals("Pasantías"))){
                             postType = "Pasantía";
-                            l.add(companyName + "\nTipo de oferta: " + postType + "\nPosición: "+ position);
-                            milista.add(companyName+ "\nTipo de oferta: " + postType + "\nTecnología: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
-                                    "\nFecha de Vencimiento: " + date1 );
+                            spinner_tech.setVisibility(View.VISIBLE);
+                            if(tech.equals("Seleccione..")) {
+                                l.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position);
+                                milista.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position + "\nDescripción: " + description + "\nEmail: " + email +
+                                        "\nFecha de Vencimiento: " + date1);
+                            }else{if(tech.equals("Java") && position.equals("Java")){
+                                l.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position);
+                                milista.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position + "\nDescripción: " + description + "\nEmail: " + email +
+                                        "\nFecha de Vencimiento: " + date1);
+                            }else{if(tech.equals("C#") && position.equals("C#")){
+                                l.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position);
+                                milista.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position + "\nDescripción: " + description + "\nEmail: " + email +
+                                        "\nFecha de Vencimiento: " + date1);
+                            }else{if(tech.equals("HTML/CSS") && position.equals("HTML/CSS")){
+                                l.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position);
+                                milista.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position + "\nDescripción: " + description + "\nEmail: " + email +
+                                        "\nFecha de Vencimiento: " + date1);
+                            }else{if(tech.equals("Android/IOS") && position.equals("Android/IOS")){
+                                l.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position);
+                                milista.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position + "\nDescripción: " + description + "\nEmail: " + email +
+                                        "\nFecha de Vencimiento: " + date1);
+                            }else{if(tech.equals("SQL/Oracle") && position.equals("SQL/Oracle")){
+                                l.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position);
+                                milista.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position + "\nDescripción: " + description + "\nEmail: " + email +
+                                        "\nFecha de Vencimiento: " + date1);
+                            }else{if(tech.equals("Otra") && position.equals("Otra")){
+                                l.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position);
+                                milista.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: " + position + "\nDescripción: " + description + "\nEmail: " + email +
+                                        "\nFecha de Vencimiento: " + date1);
+
+                            }}}}}}}
                             }else {
                             if((postType.equals("Project")) && (type.equals("Proyectos"))){
                                 postType= "Proyecto";
@@ -139,7 +168,7 @@ public class JobsFeedBack extends AppCompatActivity {
                                     if(type.equals("Filtrar")){
                                         if(postType.equals("Internship")) {
                                             postType = "Pasantía";
-                                        l.add(companyName + "\nTipo de oferta: " + postType + "\nPosición: "+ position);
+                                        l.add(companyName + "\nTipo de oferta: " + postType + "\nTecnología: "+ position);
                                             milista.add(companyName+ "\nTipo de oferta: " + postType + "\nTecnología: "+ position+ "\nDescripción: "+ description+  "\nEmail: "+ email+
                                                     "\nFecha de Vencimiento: " + date1 );
                                     }else {
