@@ -201,7 +201,7 @@ public class internship extends AppCompatActivity {
 
     private String expirationDate(){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String dateInString = dueDate.getText().toString().trim();
+        String dateInString = dueDate.getText().toString().trim().replace("/", "-");
         String expirationDate = "";
         try {
 
