@@ -29,6 +29,7 @@ public class CompanyMenu extends AppCompatActivity {
     private Button Post;
     private Button SeeStudents;
     private EditText RandomCode;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class CompanyMenu extends AppCompatActivity {
         SeeStudents = (Button) findViewById(R.id.bSeeStudents);
         RandomCode = (EditText) findViewById(R.id.edRandomCode);
 
+        progress= new ProgressDialog(this);
         SeeStudents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,14 +70,17 @@ public class CompanyMenu extends AppCompatActivity {
     public void loginRandomCode() {
         final String randomCode = RandomCode.getText().toString().trim();
 
+        progress.setMessage("Cargando...");
+        progress.show();
         StringRequest request = new StringRequest(Request.Method.GET, Constants.URLRandomCode +"code="+randomCode
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progress.dismiss();
                 try{
                     JSONObject json = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),json.getString("message"), Toast.LENGTH_LONG).show();
-                    if(json.getString("code")!= null){
+                    //Toast.makeText(getApplicationContext(),json.getString("code"), Toast.LENGTH_LONG).show();
+                    if(json != null){
                         Intent next = new Intent(CompanyMenu.this, ListStudents.class);
                         startActivity(next);
                     } else {
@@ -90,7 +95,8 @@ public class CompanyMenu extends AppCompatActivity {
         },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"No se encuentra el dato", Toast.LENGTH_LONG).show();
+                progress.hide();
+                Toast.makeText(getApplicationContext(),"No se encuentra el código", Toast.LENGTH_LONG).show();
             }
         }){
             @Override
