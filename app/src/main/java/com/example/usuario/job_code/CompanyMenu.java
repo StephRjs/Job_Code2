@@ -26,7 +26,6 @@ import java.util.Random;
 
 public class CompanyMenu extends AppCompatActivity {
 
-    private Button Post;
     private Button SeeStudents;
     private EditText RandomCode;
     private ProgressDialog progress;
@@ -36,7 +35,6 @@ public class CompanyMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_menu);
 
-        Post = (Button) findViewById(R.id.bPost);
         SeeStudents = (Button) findViewById(R.id.bSeeStudents);
         RandomCode = (EditText) findViewById(R.id.edRandomCode);
 
@@ -55,15 +53,6 @@ public class CompanyMenu extends AppCompatActivity {
         });
 
 
-        Post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    if(v == Post) {
-                        Intent next = new Intent(CompanyMenu.this, Publish.class);
-                        startActivity(next);
-                }
-            }
-        });
     }
 
 

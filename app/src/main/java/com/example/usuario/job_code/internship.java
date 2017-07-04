@@ -34,6 +34,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 /*Llamados a las librerías de JSon necesarias para el manejo de datos que se les envía y devuelven los
 Web Services*/
 import org.json.JSONException;
@@ -47,6 +49,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class internship extends AppCompatActivity {
 
@@ -188,10 +191,17 @@ public class internship extends AppCompatActivity {
     }
 
     private void sendPush(String company){
-        SendNotification push = new SendNotification();
-
-
+        String msj= company+" recientemente ha realizado una publicación";
+      //  FirebaseMessaging fm = FirebaseMessaging.getInstance();
+        //AtomicInteger msgId = null;
+        //fm.send(new RemoteMessage.Builder(Constants.SENDER_ID + "@gcm.googleapis.com")
+          //      .setMessageId(Integer.toString(msgId.incrementAndGet()))
+             //   .addData("my_message", "Hello World")
+                //.addData("my_action","SAY_HELLO")
+               // .build());
     }
+
+
 
     private String random() {
         Random rnd = new Random();
@@ -218,6 +228,7 @@ public class internship extends AppCompatActivity {
 
         return expirationDate;
     }
+
 
     private class CodeEmailTask extends AsyncTask<Void, Integer, Boolean> {
 
