@@ -13,10 +13,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 /*Llamados a las librerías de JSon necesarias para el manejo de datos que se les envía y devuelven los
 Web Services*/
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.net.HttpURLConnection;
@@ -29,12 +32,13 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
 
     private Button Login,signUp;
-    private EditText Username, Password;
+    private EditText Username, Password,NombreEditable;
     private TextView ForgotPassword;
     private ProgressDialog progress;
     private boolean loginStatus = true;
     URL url =null;
     HttpURLConnection client= null;
+
 
     /**
      * Método que se encarga de sobre-escribir la construccioón y validación de la parte gráfica del
@@ -52,7 +56,10 @@ public class Login extends AppCompatActivity {
         Username = (EditText) findViewById(R.id.edUser);
         Password = (EditText) findViewById(R.id.edPassword);
         Login = (Button) findViewById(R.id.bLogin);
+        NombreEditable = (EditText) findViewById(R.id.NombreEditable);
         progress= new ProgressDialog(this);
+
+
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +72,14 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "El formato del correo es incorrecto debe contener @",
                                 Toast.LENGTH_LONG).show();
 
+
                     } else {
 
                         if(v == Login)
+
                        sendPost();
+
+
                     }
                 }
             }
@@ -90,16 +101,24 @@ public class Login extends AppCompatActivity {
 
         final String Usernam = Username.getText().toString().trim();
         final String Passwo = Password.getText().toString().trim();
-        progress.setMessage("Cargando datos...");
-        progress.show();
-        StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTERLoginEx+"email="+Usernam+
+
+         StringRequest request = new StringRequest(Request.Method.GET, Constants.URL_REGISTERLoginEx +"email="+Usernam +
                 "&password="+Passwo, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
+
+
                 progress.dismiss();
                 try{
+                    Toast.makeText(getApplicationContext(),"entro aqui1", Toast.LENGTH_LONG).show();
+
                     JSONObject json = new JSONObject(response);
+                    String  nombre = json.getString("name");
+                       // nombre = json.getString()
+
+                    NombreEditable.setText(nombre);
+
                     Toast.makeText(getApplicationContext(),json.getString("message"), Toast.LENGTH_LONG).show();
                     if(json.getString("email")!= null){
                         Toast.makeText(getApplicationContext(),"pasooooo", Toast.LENGTH_LONG).show();
@@ -110,6 +129,7 @@ public class Login extends AppCompatActivity {
                     System.out.println(e.toString());
                 }
             }
+
         },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -128,7 +148,12 @@ public class Login extends AppCompatActivity {
             }
         };
 
-    }
 
+        RequestQueue rQ = Volley.newRequestQueue(this);
+        rQ.add(request);
+
+
+
+}
 }
 
