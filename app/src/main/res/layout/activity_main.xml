@@ -67,20 +67,6 @@
             tools:layout_editor_absoluteX="124dp"
             tools:layout_editor_absoluteY="254dp" />
 
-        <Button
-            android:id="@+id/bt_list"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:layout_weight="0.52"
-            android:background="@color/colorPrimary"
-            android:lineSpacingExtra="10sp"
-            android:text="Todos Estudiantes"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="124dp"
-            tools:layout_editor_absoluteY="254dp" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

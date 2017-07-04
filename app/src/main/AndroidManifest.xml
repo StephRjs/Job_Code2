@@ -32,20 +32,21 @@
         </activity>
         <activity android:name=".SeeStudent" />
         <activity android:name=".DetailOffer" />
+        <activity android:name=".CompanyMenu" />
         <activity android:name=".PasswordRecovery" />
 
-        <service
-            android:name=".SendNotification">
+        <service android:name=".SendNotification">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".recieve">
+        <service android:name=".recieve">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".CompanyMenu"></activity>
     </application>
 
 </manifest>

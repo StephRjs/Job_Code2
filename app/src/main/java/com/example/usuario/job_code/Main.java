@@ -9,18 +9,16 @@ import android.widget.Button;
 public class Main extends AppCompatActivity {
     private Button bt_student;
     private Button bt_company;
-    private Button bt_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bt_company = (Button)findViewById(R.id.bt_company);
         bt_student = (Button)findViewById(R.id.bt_student);
-        bt_list = (Button)findViewById(R.id.bt_list);
         bt_company.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(Main.this, Publish.class);
+                Intent next = new Intent(Main.this, CompanyMenu.class);
                 startActivity(next);
             }
         });
@@ -28,14 +26,6 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent next = new Intent(Main.this, JobsFeedBack.class);
-                startActivity(next);
-            }
-        });
-
-        bt_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent next = new Intent(Main.this, ListStudents.class);
                 startActivity(next);
             }
         });
