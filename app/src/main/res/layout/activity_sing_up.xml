@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -9,6 +10,13 @@
     tools:context="com.example.usuario.job_code.SingUp"
     android:padding="18dp"
     android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.58"
+        app:srcCompat="@mipmap/logo" />
 
     <EditText
             android:id="@+id/etNombre"
@@ -78,32 +86,6 @@
         android:gravity="center"
         android:text="Crear Perfil"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/bLogin"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="295dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="5px"
-        android:background="?attr/colorPrimary"
-        android:gravity="center"
-        android:text="Iniciar Sesión"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/bList"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="5px"
-        android:layout_weight="0.11"
-        android:background="?attr/colorPrimary"
-        android:gravity="center"
-        android:text="Iniciar Sesión"
-        android:textStyle="bold" />
-
 
 
 </LinearLayout>

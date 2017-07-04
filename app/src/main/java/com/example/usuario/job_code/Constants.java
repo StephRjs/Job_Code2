@@ -32,6 +32,10 @@ public class Constants {
     public static final String URL_AllStudents = ROOT_URLL+"allstudents";
     public static final String URL_GETALLPOST = "http://jobcode.azurewebsites.net/Post.svc/getAllPosts?";
     public static final String ROOT_URLcode = "http://jobcode.azurewebsites.net/Code.svc/";
+    public static final String URLRandomCode = ROOT_URLcode + "existRandomCode?";
     public static final String URL_INSERTCODE = ROOT_URLcode+"insertRandomCode?";
     public static final String URL_FORGOTPASS = ROOT_URLL+"passwordRecovery?";
+    public static final String URL_PUSH = "http://jobcode.azurewebsites.net/Login.svc/sendPush?";
+    public static final String SENDER_ID = "170669006092";
+
 }

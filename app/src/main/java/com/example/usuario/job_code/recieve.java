@@ -1,6 +1,7 @@
 package com.example.usuario.job_code;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -12,18 +13,21 @@ import static android.content.ContentValues.TAG;
  */
 
 public class recieve  extends FirebaseInstanceIdService{
+
+    public static final String TAG = "JOB_CODE";
+
     @Override
     public void onTokenRefresh() {
-        // Get updated InstanceID token.
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d(TAG, "Refreshed token: " + refreshedToken);
+        super.onTokenRefresh();
 
-        // If you want to send messages to this application instance or
-        // manage this apps subscriptions on the server side, send the
-        // Instance ID token to your app server.
-        sendRegistrationToServer(refreshedToken);
+        String token = FirebaseInstanceId.getInstance().getToken();
+
+        Log.d(TAG, "Token: " + token);
+
+        enviarTokenAlServidor(token);
     }
 
-    private void sendRegistrationToServer(String refreshedToken) {
+    private void enviarTokenAlServidor(String token) {
+        Toast.makeText(getApplicationContext(),token , Toast.LENGTH_LONG).show();
     }
 }

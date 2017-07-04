@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.usuario.job_code.CompanyMenu"
+    android:padding="18dp"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:adjustViewBounds="false"
+        app:srcCompat="@mipmap/logo"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_weight="0.17" />
+
+    <EditText
+        android:id="@+id/edRandomCode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Ingrese su codigo aleatorio"
+        android:paddingTop="20dp"
+        android:textColor="?attr/colorControlNormal"
+        android:layout_weight="0.19" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30px"
+        android:layout_marginTop="30px"
+        android:text="Este código se refiere a el código de verificación que recibió cuando realizó su publicación."
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="?attr/colorControlNormal"
+        android:textSize="18sp"
+        android:layout_weight="0.12" />
+
+    <Button
+        android:id="@+id/bSeeStudents"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20px"
+        android:layout_weight="0.07"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:text="Ver estudiantes"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"
+        android:layout_weight="0.22" />
+
+</LinearLayout>
