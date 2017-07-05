@@ -115,8 +115,9 @@ public class EditProfile extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(),"Se modificaron los datos con éxito", Toast.LENGTH_LONG).show();
 
-                        Intent next = new Intent(EditProfile.this, Login.class);
+                        Intent next = new Intent(EditProfile.this, JobsFeedBack.class);
                         startActivity(next);
+                        
                     }
 
                 }catch(JSONException e){
