@@ -40,6 +40,7 @@ public class JobsFeedBack extends AppCompatActivity {
     private ProgressDialog progress;
     private Spinner spin_types, spinner_tech;
     private String tech;
+    private Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class JobsFeedBack extends AppCompatActivity {
         setContentView(R.layout.activity_jobs_feed_back);
         spin_types= (Spinner)findViewById(R.id.spin_types);
         spinner_tech= (Spinner)findViewById(R.id.spinner_tech);
+        logout = (Button)findViewById(R.id.blogout);
         spinner_tech.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -69,7 +71,19 @@ public class JobsFeedBack extends AppCompatActivity {
                 // your code here
             }
 
-        });}
+
+
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next = new Intent(JobsFeedBack.this, Main.class);
+                startActivity(next);
+
+            }
+        });
+    }
 
     public void getAllPost(){
         String url = Constants.URL_GETALLPOST;
