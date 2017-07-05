@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.usuario.job_code.EditProfile"
+    android:weightSum="1">
+    android:padding="18dp"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageViewy"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:srcCompat="@mipmap/logo"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="3dp" />
+    <EditText
+        android:id="@+id/etNombreEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:fontFamily="Roboto"
+        android:hint="Nombre" />
+
+    <EditText
+        android:id="@+id/etApellido1Edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:fontFamily="Roboto"
+        android:hint="Primer apellido"
+        android:layout_weight="0.18" />
+
+    <EditText
+        android:id="@+id/etApellido2Edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Segundo apellido"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etCellphoneEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Teléfono"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/etCurrentAddressEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Dirección actual "
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/etPrimarySkillEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Principal habilidad "
+        android:inputType="text"
+        android:layout_weight="0.23" />
+    <EditText
+        android:id="@+id/etMoreSkillEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Otras habilidades "
+        android:inputType="text"
+        android:layout_weight="0.18" />
+
+    <EditText
+        android:id="@+id/etExperienceEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Experiencia "
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/etEmailEdit"
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:hint="Email"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:layout_weight="0.23" />
+
+    <Button
+        android:id="@+id/bActualizarEdit"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="294dp"
+        android:layout_height="33dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20px"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:text="Guardar Cambios"
+        android:textStyle="bold" />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"
+        android:layout_weight="0.22" />
+
+</LinearLayout>
+

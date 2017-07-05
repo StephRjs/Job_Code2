@@ -26,8 +26,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Username"
-        android:paddingTop="20dp" />
+        android:hint="Correo Electrónico"
+        android:paddingTop="20dp"
+        android:inputType="textEmailAddress"
+        />
 
     <TextView
         android:id="@+id/tv_result"
@@ -36,6 +38,8 @@
         android:gravity="center"
         android:text=""
         android:textSize="26dp" />
+
+
 
     <EditText
         android:id="@+id/edPassword"

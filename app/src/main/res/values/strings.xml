@@ -31,6 +31,8 @@
         <item>SQL/Oracle</item>
         <item>Otra</item>
     </string-array>
+    <string name="title_activity_edit_profile">EditProfile</string>
+    <string name="title_activity_menu_student">MenuStudent</string>
 
 
 </resources>
