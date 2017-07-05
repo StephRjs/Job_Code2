@@ -8,7 +8,6 @@ import android.widget.Button;
 
 public class StudentMenu extends AppCompatActivity {
     private Button bEditarPerfil;
-    private Button bSeeStudents;
     private Button bOfertas;
 
     @Override
@@ -17,7 +16,6 @@ public class StudentMenu extends AppCompatActivity {
         setContentView(R.layout.activity_student_menu);
 
         bEditarPerfil = (Button)findViewById(R.id.bEditarPerfil);
-        bSeeStudents = (Button)findViewById(R.id.bSeeStudents);
         bOfertas = (Button)findViewById(R.id.bOfertas);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -32,7 +30,6 @@ public class StudentMenu extends AppCompatActivity {
         final String Otrashabilidades = extras.getString("MoreSkills");
         final String email2= extras.getString("email");
         final String password = extras.getString("password") ;
-
 
         bEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,14 +51,7 @@ public class StudentMenu extends AppCompatActivity {
 
             }
         });
-        bSeeStudents.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent next = new Intent(StudentMenu.this, ListStudents.class);
-                startActivity(next);
 
-            }
-        });
         bOfertas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

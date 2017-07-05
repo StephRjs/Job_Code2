@@ -117,7 +117,7 @@ public class EditProfile extends AppCompatActivity {
 
                         Intent next = new Intent(EditProfile.this, JobsFeedBack.class);
                         startActivity(next);
-                        
+
                     }
 
                 }catch(JSONException e){

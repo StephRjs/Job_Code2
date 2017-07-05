@@ -1,4 +1,5 @@
 package com.example.usuario.job_code;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -84,7 +85,10 @@ public class CreateProfile extends AppCompatActivity {
                 progress.dismiss();
                 try{
                     JSONObject json = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),json.getString("message"), Toast.LENGTH_LONG).show();
+                    if (json.getString("name") != null) {
+                        Intent next = new Intent(CreateProfile.this, JobsFeedBack.class);
+                        startActivity(next);
+                    }
                 }catch(JSONException e){
                     e.printStackTrace();
                     System.out.println(e.toString());
