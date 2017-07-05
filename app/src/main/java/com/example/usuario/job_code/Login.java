@@ -32,13 +32,22 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
 
     private Button Login,signUp;
-    private EditText Username, Password,NombreEditable;
+    private EditText Username, Password;
     private TextView ForgotPassword;
     private ProgressDialog progress;
     private boolean loginStatus = true;
     URL url =null;
     HttpURLConnection client= null;
-
+    String  nombre;
+    String apellido1 ;
+    String apellido2;
+    String Cellphone  ;
+    String CurrentAddress ;
+    String Experience ;
+    String PrimarySkill ;
+    String MoreSkills ;
+    String email;
+    String password;
 
     /**
      * Método que se encarga de sobre-escribir la construccioón y validación de la parte gráfica del
@@ -56,7 +65,6 @@ public class Login extends AppCompatActivity {
         Username = (EditText) findViewById(R.id.edUser);
         Password = (EditText) findViewById(R.id.edPassword);
         Login = (Button) findViewById(R.id.bLogin);
-        NombreEditable = (EditText) findViewById(R.id.NombreEditable);
         progress= new ProgressDialog(this);
 
 
@@ -111,19 +119,38 @@ public class Login extends AppCompatActivity {
 
                 progress.dismiss();
                 try{
-                    Toast.makeText(getApplicationContext(),"entro aqui1", Toast.LENGTH_LONG).show();
-
                     JSONObject json = new JSONObject(response);
-                    String  nombre = json.getString("name");
-                       // nombre = json.getString()
+                    //Toast.makeText(getApplicationContext(),json.getString("name"), Toast.LENGTH_LONG).show();
 
-                    NombreEditable.setText(nombre);
+                    if(json.getString("name")!= null ||  json.getString("lastname1")!= null || json.getString("lastname2")!= null || json.getString("cellphone")!= null    ) {
 
-                    Toast.makeText(getApplicationContext(),json.getString("message"), Toast.LENGTH_LONG).show();
-                    if(json.getString("email")!= null){
-                        Toast.makeText(getApplicationContext(),"pasooooo", Toast.LENGTH_LONG).show();
+
+                        nombre = json.getString("name");
+                        apellido1 = json.getString("lastname1");
+                        apellido2 = json.getString("lastname2");
+                        Cellphone = json.getString("cellphone");
+                        CurrentAddress = json.getString("currentAddress");
+                        Experience = json.getString("experience");
+                        PrimarySkill = json.getString("primarySkill");
+                        MoreSkills = json.getString("moreSkills");
+                        email = json.getString("email");
+                        password = Passwo;
+
+                        Intent next = new Intent(Login.this, StudentMenu.class);
+                        next.putExtra("nombre",nombre );
+                        next.putExtra("primerApellido",apellido1);
+                        next.putExtra("segundoApellido",apellido2);
+                        next.putExtra("Cellphone",Cellphone);
+                        next.putExtra("CurrentAddress",CurrentAddress);
+                        next.putExtra("Experience",Experience);
+                        next.putExtra("PrimarySkill",PrimarySkill);
+                        next.putExtra("MoreSkills",MoreSkills);
+                        next.putExtra("email",email);
+                        next.putExtra("password",password);
+                        startActivity(next);
 
                     }
+
                 }catch(JSONException e){
                     e.printStackTrace();
                     System.out.println(e.toString());
@@ -143,6 +170,7 @@ public class Login extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("email", Usernam);
                 params.put("password", Passwo);
+
                 return params;
 
             }

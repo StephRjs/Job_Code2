@@ -230,7 +230,6 @@ public class JobsFeedBack extends AppCompatActivity {
     }
     public static String JsonDateToDate(String jsonDate)
     {
-     
 
         jsonDate=jsonDate.replace("/Date(", "").replace("+0000)/", "");
         long time = Long.parseLong(jsonDate);

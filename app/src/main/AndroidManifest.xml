@@ -46,7 +46,8 @@
             </intent-filter>
         </service>
 
-
+        <activity android:name=".EditProfile" />
+        <activity android:name=".StudentMenu"></activity>
     </application>
 
 </manifest>
