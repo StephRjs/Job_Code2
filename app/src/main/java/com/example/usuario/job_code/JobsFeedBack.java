@@ -37,8 +37,6 @@ import java.util.List;
 
 
 public class JobsFeedBack extends AppCompatActivity {
-    private Button bt_singIn;
-    private Button bt_setUp;
     private ProgressDialog progress;
     private Spinner spin_types, spinner_tech;
     private String tech;
@@ -47,8 +45,6 @@ public class JobsFeedBack extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jobs_feed_back);
-        bt_setUp = (Button)findViewById(R.id.bt_setUp);
-        bt_singIn= (Button)findViewById(R.id.bt_singin);
         spin_types= (Spinner)findViewById(R.id.spin_types);
         spinner_tech= (Spinner)findViewById(R.id.spinner_tech);
         spinner_tech.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -73,20 +69,6 @@ public class JobsFeedBack extends AppCompatActivity {
                 // your code here
             }
 
-        });
-        bt_singIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent next = new Intent(JobsFeedBack.this, Login.class);
-                startActivity(next);
-            }
-        });
-        bt_setUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent next = new Intent(JobsFeedBack.this, SingUp.class);
-                startActivity(next);
-            }
         });}
 
     public void getAllPost(){

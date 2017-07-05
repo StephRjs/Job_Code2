@@ -84,7 +84,7 @@
         android:layout_margin="20px"
         android:background="?attr/colorPrimary"
         android:gravity="center"
-        android:text="Crear Perfil"
+        android:text="Crear Perfil Profesional"
         android:textStyle="bold" />
 
 

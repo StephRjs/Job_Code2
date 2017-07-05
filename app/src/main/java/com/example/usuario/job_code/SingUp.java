@@ -79,7 +79,11 @@ public class SingUp extends AppCompatActivity {
                 progress.dismiss();
                 try{
                     JSONObject json = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),json.getString("message"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),json.getString("name"), Toast.LENGTH_LONG).show();
+                    if (json.getString("name") != null) {
+                        Intent next = new Intent(SingUp.this, JobsFeedBack.class);
+                        startActivity(next);
+                    }
                 }catch(JSONException e){
                     e.printStackTrace();
                     System.out.println(e.toString());

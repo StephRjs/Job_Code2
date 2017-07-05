@@ -111,7 +111,7 @@ public class EditProfile extends AppCompatActivity {
                 try{
 
                     JSONObject json = new JSONObject(response);
-                    if(json.getString("name")!= null ||  json.getString("lastname1")!= null || json.getString("lastname2")!= null || json.getString("cellphone")!= null    ) {
+                    if(json.getString("name")!= null) {
 
                         Toast.makeText(getApplicationContext(),"Se modificaron los datos con éxito", Toast.LENGTH_LONG).show();
 

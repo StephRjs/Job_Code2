@@ -46,7 +46,7 @@ public class Main extends AppCompatActivity {
             public void onClick(View v) {
                 bt_SeeStudents.setVisibility(View.INVISIBLE);
                 bt_Publish.setVisibility(View.INVISIBLE);
-                Intent next = new Intent(Main.this, JobsFeedBack.class);
+                Intent next = new Intent(Main.this, Login.class);
                 startActivity(next);
             }
         });

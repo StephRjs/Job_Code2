@@ -70,7 +70,7 @@ public class PasswordRecovery extends AppCompatActivity {
                 progress.dismiss();
                 try{
                     JSONObject json = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),json.getString("message"), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),json.getString("message"), Toast.LENGTH_LONG).show();
                     if(json.getString("email")!= null){
                         Toast.makeText(getApplicationContext(),"Correo enviado correctamente!", Toast.LENGTH_LONG).show();
                         EmailTask task = new EmailTask();
